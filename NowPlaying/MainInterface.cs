@@ -119,7 +119,7 @@ namespace JoelLow.NowPlaying
 			}
 			catch (Exception e)
 			{
-				errorHandler(e);
+				ErrorHandler(e);
 			}
 		}
 
@@ -127,6 +127,23 @@ namespace JoelLow.NowPlaying
 		private void DebugPrint(String strText)
 		{
 			txtUserInfo.Text = txtUserInfo.Text + strText + "\r\n";
+		}
+
+		private void ErrorHandler(Exception e)
+		{
+#if DEBUG
+			throw e;
+#else
+			DebugPrint("A Fatal error has occured: " + e.Message);
+			DebugPrint("The Failure Occured In Class Object: " + e.Source);
+			DebugPrint("when calling Method " + e.TargetSite);
+			DebugPrint("The following Inner Exception was caused" + e.InnerException);
+			DebugPrint("The Stack Trace Follows:\r\n" + e.StackTrace);
+
+			txtUserInfo.Dock = DockStyle.Fill;
+
+			this.Enabled = false;
+#endif
 		}
 
 		// At the time this template was created the MCC: NOTIFY_SKIN_CHANGED
@@ -235,25 +252,6 @@ namespace JoelLow.NowPlaying
 
 		#endregion
 
-		#region ErrorHandler
-		private void errorHandler(Exception e)
-		{
-#if DEBUG
-			throw e;
-#else
-			addUserInfoText("A Fatal error has occured: " + e.Message);
-			addUserInfoText("The Failure Occured In Class Object: " + e.Source);
-			addUserInfoText("when calling Method " + e.TargetSite);
-			addUserInfoText("The following Inner Exception was caused" + e.InnerException);
-			addUserInfoText("The Stack Trace Follows:\r\n" + e.StackTrace);
-
-			txtUserInfo.Dock = DockStyle.Fill;
-
-			this.Enabled = false;
-#endif
-		}
-		#endregion
-
 		#region Skinning
 
 		private void SkinPlugin()
@@ -266,7 +264,7 @@ namespace JoelLow.NowPlaying
 			}
 			catch (Exception e)
 			{
-				errorHandler(e);
+				ErrorHandler(e);
 			}
 		}
 
@@ -304,7 +302,7 @@ namespace JoelLow.NowPlaying
 			}
 			catch (Exception e)
 			{
-				errorHandler(e);
+				ErrorHandler(e);
 			}
 
 			return colReturned;
