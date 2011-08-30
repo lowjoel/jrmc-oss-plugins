@@ -195,7 +195,15 @@ namespace JoelLow.NowPlaying
 							break;
 
 						//Events we aren't interested in.
+						case "MCC: NOTIFY_PLAYLIST_ADDED":
+						case "MCC: NOTIFY_PLAYLIST_INFO_CHANGED":
+						case "MCC: NOTIFY_PLAYLIST_FILES_CHANGED":
+						case "MCC: NOTIFY_PLAYLIST_REMOVED":
+						case "MCC: NOTIFY_PLAYLIST_COLLECTION_CHANGED":
+						case "MCC: NOTIFY_PLAYLIST_PROPERTIES_CHANGED":
+						case "MCC: NOTIFY_SKIN_CHANGED":
 						case "MCC: NOTIFY_VOLUME_CHANGED":
+						case "MCC: NOTIFY_EQ_CHANGED":
 							break;
 
                         default:
