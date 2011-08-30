@@ -28,6 +28,7 @@ namespace JoelLow.NowPlaying
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.Panel = new System.Windows.Forms.Panel();
 			this.txtUserInfo = new System.Windows.Forms.TextBox();
 			this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -36,6 +37,7 @@ namespace JoelLow.NowPlaying
 			this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
 			this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
 			this.mainPanel = new System.Windows.Forms.Panel();
+			this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
 			this.Panel.SuspendLayout();
 			this.mainPanel.SuspendLayout();
 			this.SuspendLayout();
@@ -107,6 +109,12 @@ namespace JoelLow.NowPlaying
 			this.mainPanel.TabIndex = 0;
 			this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
 			// 
+			// RefreshTimer
+			// 
+			this.RefreshTimer.Enabled = true;
+			this.RefreshTimer.Interval = 5000;
+			this.RefreshTimer.Tick += new System.EventHandler(this.RefreshTimer_Tick);
+			// 
 			// MainInterface
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +140,7 @@ namespace JoelLow.NowPlaying
 		private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
 		private System.Windows.Forms.ToolStripContentPanel ContentPanel;
 		private System.Windows.Forms.Panel mainPanel;
+		private System.Windows.Forms.Timer RefreshTimer;
 
 	}
 }
