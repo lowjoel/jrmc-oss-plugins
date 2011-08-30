@@ -10,7 +10,7 @@
     <RootNamespace>JoelLow.NowPlaying</RootNamespace>
     <AssemblyName>NowPlaying</AssemblyName>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>TemplateKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>CodeSigning.snk</AssemblyOriginatorKeyFile>
     <StartupObject>
     </StartupObject>
     <FileUpgradeFlags>
@@ -97,17 +97,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="TemplateKey.snk" />
+    <None Include="Strong Name %28Joel Low%29.snk" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Installation\Installation Script.iss" />
-    <Content Include="Readme\InnoSetup.jpg" />
-    <Content Include="Readme\InnoSetupScript.jpg" />
-    <Content Include="Readme\InteropSettings.jpg" />
-    <Content Include="Readme\MCPlugin.htm" />
-    <Content Include="Readme\MCWithTemplate.jpg" />
-    <Content Include="Readme\smflogo.jpg" />
-    <Content Include="Readme\VSRelease.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
