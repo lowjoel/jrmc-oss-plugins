@@ -81,6 +81,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="WlmNowPlaying.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +100,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Strong Name %28Joel Low%29.snk" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Installation\Installation Script.iss" />
