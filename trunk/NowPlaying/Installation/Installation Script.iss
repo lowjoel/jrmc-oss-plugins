@@ -25,7 +25,7 @@ Source: "Build Files\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs c
 
 [Registry]
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: dword; ValueName: "IVersion"; ValueData: "00010001"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: dword; ValueName: "IVersion"; ValueData: "00000001"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Company"; ValueData: "Joel Low"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Version"; ValueData: "0.1.0.1"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "URL"; ValueData: "joelsplace.sg"; Flags: uninsdeletekey
@@ -34,7 +34,7 @@ Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playi
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "ProdID"; ValueData: "JoelLow.NowPlaying"; Flags: uninsdeletekey
 
 [Run]
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase NowPlaying.dll"; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
 
 [UninstallRun]
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister NowPlaying.dll"; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
