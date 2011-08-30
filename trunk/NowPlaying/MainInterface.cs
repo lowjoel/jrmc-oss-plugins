@@ -73,9 +73,10 @@ namespace JoelLow.NowPlaying
 			}
 		}
 
-		// Check the version of Media Center.
-		// Don't support C# Plugins with versions lower than 11.1
-		// Certain Events are not supported with older versions
+		/// <summary>
+		/// Check the version of Media Center. I've only tested this on 14.0.160 and later.
+		/// </summary>
+		/// <returns></returns>
 		private Boolean checkVersion()
 		{
 			IMJVersionAutomation version = MediaCenterAutomation.GetVersion();
@@ -93,12 +94,16 @@ namespace JoelLow.NowPlaying
 			return false;
 		}
 
+		/// <summary>
+		/// Plugin entry point.
+		/// </summary>
+		/// <param name="mcRef"></param>
 		public void Init(MediaCenter.MCAutomation mcRef)
 		{
 			try
 			{
 				// This is the main entry for MC Automation
-				this.MediaCenterAutomation = mcRef;
+				MediaCenterAutomation = mcRef;
 
 				// Check the version we're running in
 				if (checkVersion())
@@ -109,7 +114,7 @@ namespace JoelLow.NowPlaying
 							mediaCenterAutomation_FireMJEventHandler);
 					
 					// Init our plugin
-					initAll();
+					Initialize();
 
 					addUserInfoText("Plugin Initiated OK");
 				}
@@ -120,16 +125,14 @@ namespace JoelLow.NowPlaying
 			}
 		}
 
-		private void initAll()
+		#endregion
+
+		#region Plugin functionality
+
+		private void Initialize()
 		{
-			try
-			{
-				UpdateOnPlayerStateChange();
-			}
-			catch (Exception e)
-			{
-				errorHandler(e);
-			}
+			// Broadcast MC's current playing state
+			UpdateOnPlayerStateChange();
 		}
 
 		private void mediaCenterAutomation_FireMJEventHandler(string bstrType, string bstrParam1, string bstrParam2)
