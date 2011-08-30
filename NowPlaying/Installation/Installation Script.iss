@@ -2,14 +2,14 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 [Setup]
-AppName=CSTemplate Plugin for JRMC12
-AppVerName=CSTemplate Plugin Version 0.0.0.1
-AppPublisher=Your Name
-AppPublisherURL=www.YourUrl.com
-AppSupportURL=www.YourUrl.com
-AppUpdatesURL=www.YourUrl.com
-DefaultDirName={pf}\J River\Media Center 12\Plugins\CSTemplate
-DefaultGroupName=CSTemplate Plugin
+AppName=Now Playing for J. River Media Center
+AppVerName=Now Playing for J. River Media Center 0.1
+AppPublisher=Joel Low
+AppPublisherURL=joelsplace.sg
+AppSupportURL=joelsplace.sg
+AppUpdatesURL=joelsplace.sg
+DefaultDirName={pf}\J River\Media Center 16\Plugins
+DefaultGroupName=
 DisableProgramGroupPage=yes
 OutputBaseFilename=Setup
 Compression=lzma
@@ -23,21 +23,18 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Source: "Build Files\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
-[Icons]
-Name: "{group}\{cm:UninstallProgram, Plugin}"; Filename: "{uninstallexe}"
-
 [Registry]
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; ValueType: dword; ValueName: "IVersion"; ValueData: "00000001"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; ValueType: string; ValueName: "Company"; ValueData: "Your Company"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; ValueType: string; ValueName: "Version"; ValueData: "0.0.0.1"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; ValueType: string; ValueName: "URL"; ValueData: "www.yoururl.com"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; ValueType: string; ValueName: "Copyright"; ValueData: "Copyright (c) 2007, Your Name."; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\JoelLow.WLMNowPlaying"; ValueType: dword; ValueName: "PluginMode"; ValueData: "00000001"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\WLM Now Playing"; ValueType: string; ValueName: "ProdID"; ValueData: "JoelLow.WLMNowPlaying"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: dword; ValueName: "IVersion"; ValueData: "00010001"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Company"; ValueData: "Joel Low"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Version"; ValueData: "0.1.0.1"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "URL"; ValueData: "joelsplace.sg"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Copyright"; ValueData: "Copyright (c) 2011, Joel Low"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: dword; ValueName: "PluginMode"; ValueData: "00000001"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "ProdID"; ValueData: "JoelLow.NowPlaying"; Flags: uninsdeletekey
 
 [Run]
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase MC_CSPlugin_Template.dll";          WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase NowPlaying.dll"; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
 
 [UninstallRun]
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister MC_CSPlugin_Template.dll";          WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister NowPlaying.dll"; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
