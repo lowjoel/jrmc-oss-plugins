@@ -163,7 +163,7 @@ namespace JoelLow.NowPlaying
 		private void Initialize()
 		{
 			//Broadcast MC's current playing state
-			UpdateOnPlayerStateChange();
+			UpdateNowPlaying();
 		}
 
 		/// <summary>
@@ -181,13 +181,8 @@ namespace JoelLow.NowPlaying
                     switch (bstrParam1)
                     {
                         case "MCC: NOTIFY_TRACK_CHANGE":
-                            MediaCenter.IMJFileAutomation file = CurrentTrack;
-                            if (file != null)
-                                WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name, null, null);
-                            break;
-
                         case "MCC: NOTIFY_PLAYERSTATE_CHANGE":
-                            UpdateOnPlayerStateChange();
+							UpdateNowPlaying();
                             break;
 
 						case "MCC: NOTIFY_SKIN_CHANGED":
@@ -201,7 +196,6 @@ namespace JoelLow.NowPlaying
 						case "MCC: NOTIFY_PLAYLIST_REMOVED":
 						case "MCC: NOTIFY_PLAYLIST_COLLECTION_CHANGED":
 						case "MCC: NOTIFY_PLAYLIST_PROPERTIES_CHANGED":
-						case "MCC: NOTIFY_SKIN_CHANGED":
 						case "MCC: NOTIFY_VOLUME_CHANGED":
 						case "MCC: NOTIFY_EQ_CHANGED":
 							break;
@@ -221,25 +215,42 @@ namespace JoelLow.NowPlaying
             }
         }
 
-        private void UpdateOnPlayerStateChange()
-        {
-            MediaCenter.IMJFileAutomation file = CurrentTrack;
-            if (file != null)
-                switch (MediaCenterAutomation.GetPlayback().State)
-                {
-                    case MediaCenter.MJPlaybackStates.PLAYSTATE_PLAYING:
-					case MediaCenter.MJPlaybackStates.PLAYSTATE_PAUSED:
-						WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name,
-							null, null);
-                        break;
-					case MediaCenter.MJPlaybackStates.PLAYSTATE_STOPPED:
-						WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
-						break;
-					default:
-						WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
-                        break;
-                }
-        }
+		/// <summary>
+		/// Calls when the <see cref="RefreshTimer"/> ticks. This allows us to periodically
+		/// send out the currently playing song so that if the event recipient is registered
+		/// after MC starts, they will still get the message.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void RefreshTimer_Tick(object sender, EventArgs e)
+		{
+			UpdateNowPlaying();
+		}
+
+		/// <summary>
+		/// Updates clients on the currently playing file.
+		/// </summary>
+		private void UpdateNowPlaying()
+		{
+			MediaCenter.IMJFileAutomation file = CurrentTrack;
+			if (file == null)
+				return;
+
+			switch (MediaCenterAutomation.GetPlayback().State)
+			{
+				case MediaCenter.MJPlaybackStates.PLAYSTATE_PLAYING:
+				case MediaCenter.MJPlaybackStates.PLAYSTATE_PAUSED:
+					WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name,
+						null, null);
+					break;
+				case MediaCenter.MJPlaybackStates.PLAYSTATE_STOPPED:
+					WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
+					break;
+				default:
+					WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
+					break;
+			}
+		}
 
 		#endregion
 
