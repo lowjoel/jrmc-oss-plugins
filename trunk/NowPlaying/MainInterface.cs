@@ -183,7 +183,7 @@ namespace JoelLow.NowPlaying
                         case "MCC: NOTIFY_TRACK_CHANGE":
                             MediaCenter.IMJFileAutomation file = CurrentTrack;
                             if (file != null)
-                                SetMSNMusic(true, file.Name, file.Artist, file.Album);
+                                WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name, null, null);
                             break;
 
                         case "MCC: NOTIFY_PLAYERSTATE_CHANGE":
@@ -215,40 +215,19 @@ namespace JoelLow.NowPlaying
             if (file != null)
                 switch (MediaCenterAutomation.GetPlayback().State)
                 {
-                    case MediaCenter.MJPlaybackStates.PLAYSTATE_STOPPED:
-                        SetMSNMusic(false, "", "", "");
-                        break;
                     case MediaCenter.MJPlaybackStates.PLAYSTATE_PLAYING:
-                        SetMSNMusic(true, file.Name, file.Artist, file.Album);
+					case MediaCenter.MJPlaybackStates.PLAYSTATE_PAUSED:
+						WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name,
+							null, null);
                         break;
-                    case MediaCenter.MJPlaybackStates.PLAYSTATE_PAUSED:
-                        SetMSNMusic(true, file.Name, file.Artist, file.Album);
-                        break;
-                    default:
-                        SetMSNMusic(false, "", "", "");
+					case MediaCenter.MJPlaybackStates.PLAYSTATE_STOPPED:
+						WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
+						break;
+					default:
+						WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
                         break;
                 }
         }
-
-		private void SetMSNMusic(bool enable, string title, string artist, string album)
-		{
-			string category = "Music";
-			string buffer = "\\0" + category + "\\0" + (enable ? "1" : "0") + "\\0{0}-{1}\\0" + title + "\\0" + artist + "\\0" + album + "\\0\\0\0";
-
-			NativeMethods.MsnMusicData data;
-			data.dwData = (IntPtr)0x0547;
-			data.lpData = buffer;
-			data.cbData = buffer.Length * sizeof(char);
-
-			// Call method to update IM's - PlayingNow
-			//IntPtr TargetWindow = FindWindowEx(IntPtr.Zero, IntPtr.Zero, "MsnMsgrUIManager", null);
-			List<IntPtr> windows = FindWindows("MsnMsgrUIManager", null);
-			foreach (IntPtr hwnd in windows)
-			{
-				IntPtr result = SendMessage(hwnd, WM_COPYDATA, IntPtr.Zero, ref data);
-				DebugPrint("SendMessage: " + result.ToString());
-			}
-		}
 
 		#endregion
 
