@@ -17,7 +17,7 @@ namespace JoelLow.NowPlaying
 	#region Interop Program ID Registration
 
 	// This string must unique and match the String in the Inno Setup Script
-	[System.Runtime.InteropServices.ProgId("JoelLow.WLMNowPlaying")]
+	[System.Runtime.InteropServices.ProgId("JoelLow.NowPlaying")]
 	#endregion
 
 	public partial class MainInterface : UserControl
