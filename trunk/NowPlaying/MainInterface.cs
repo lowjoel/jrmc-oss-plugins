@@ -24,13 +24,13 @@ namespace JoelLow.NowPlaying
 	{
 		#region Properties
 
-		public MediaCenter.MCAutomation MediaCenterAutomation
+		public static MediaCenter.MCAutomation MediaCenterAutomation
 		{
 			get;
 			private set;
 		}
 
-		public MediaCenter.IMJVersionAutomation MediaCenterVersion
+		public static MediaCenter.IMJVersionAutomation MediaCenterVersion
 		{
 			get
 			{
@@ -192,6 +192,10 @@ namespace JoelLow.NowPlaying
 
 						case "MCC: NOTIFY_SKIN_CHANGED":
 							SkinPlugin();
+							break;
+
+						//Events we aren't interested in.
+						case "MCC: NOTIFY_VOLUME_CHANGED":
 							break;
 
                         default:
