@@ -10,6 +10,9 @@ namespace JoelLow.NowPlaying
 		[DllImport("user32.dll", CharSet = CharSet.Auto)]
 		private static extern IntPtr SendMessage(IntPtr hwnd, uint wMsg, IntPtr wParam, IntPtr lParam);
 
+		[DllImport("user32.dll", CharSet = CharSet.Auto)]
+		private static extern bool PostMessage(IntPtr hwnd, uint wMsg, IntPtr wParam, IntPtr lParam);
+		
 		[DllImport("user32.dll", EntryPoint = "FindWindowExW", CharSet = CharSet.Unicode)]
 		private static extern IntPtr FindWindowEx(IntPtr hWnd1, IntPtr hWnd2, string lpsz1, string lpsz2);
 
@@ -51,6 +54,10 @@ namespace JoelLow.NowPlaying
 
 		[DllImport("user32.dll", CharSet = CharSet.Unicode)]
 		public static extern IntPtr SendMessage(IntPtr hwnd, uint wMsg, IntPtr wParam,
+			ref MsnMusicData lParam);
+
+		[DllImport("user32.dll", CharSet = CharSet.Auto)]
+		public static extern bool PostMessage(IntPtr hwnd, uint wMsg, IntPtr wParam,
 			ref MsnMusicData lParam);
 	}
 }

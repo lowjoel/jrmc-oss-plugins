@@ -30,7 +30,7 @@ namespace JoelLow.NowPlaying
 
 			//Send the message.
 			foreach (IntPtr hwnd in windows)
-				NativeMethods.SendMessage(hwnd, NativeMethods.WM_COPYDATA, IntPtr.Zero, ref data);
+				NativeMethods.PostMessage(hwnd, NativeMethods.WM_COPYDATA, IntPtr.Zero, ref data);
 		}
 	}
 }
