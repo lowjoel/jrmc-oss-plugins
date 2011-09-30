@@ -27,10 +27,12 @@ namespace JoelLow.NowPlaying
 
 			//Find the target windows to send the messages to (can be more than one)
 			List<IntPtr> windows = Util.FindWindows("MsnMsgrUIManager", null);
+			uint result = 0u;
 
 			//Send the message.
 			foreach (IntPtr hwnd in windows)
-				NativeMethods.PostMessage(hwnd, NativeMethods.WM_COPYDATA, IntPtr.Zero, ref data);
+				NativeMethods.SendMessageTimeout(hwnd, NativeMethods.WM_COPYDATA, IntPtr.Zero, ref data,
+					NativeMethods.SMTO_ABORTIFHUNG, 3000u, out result);
 		}
 	}
 }

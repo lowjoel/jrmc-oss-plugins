@@ -59,5 +59,11 @@ namespace JoelLow.NowPlaying
 		[DllImport("user32.dll", CharSet = CharSet.Auto)]
 		public static extern bool PostMessage(IntPtr hwnd, uint wMsg, IntPtr wParam,
 			ref MsnMusicData lParam);
+
+		[DllImport("user32.dll", CharSet = CharSet.Auto)]
+		public static extern bool SendMessageTimeout(IntPtr hwnd, uint wMsg, IntPtr wParam,
+			ref MsnMusicData lParam, uint fuFlags, uint uTimeout, out uint lpdwResult);
+
+		public const uint SMTO_ABORTIFHUNG = 0x0002;
 	}
 }
