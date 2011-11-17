@@ -27,7 +27,7 @@ Source: "Build Files\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs c
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: dword; ValueName: "IVersion"; ValueData: "00000001"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Company"; ValueData: "Joel Low"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Version"; ValueData: "0.1.0.1"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Version"; ValueData: "0.1.0.20"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "URL"; ValueData: "joelsplace.sg"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "Copyright"; ValueData: "Copyright (c) 2011, Joel Low"; Flags: uninsdeletekey
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: dword; ValueName: "PluginMode"; ValueData: "00000001"; Flags: uninsdeletekey
