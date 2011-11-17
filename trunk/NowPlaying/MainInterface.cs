@@ -80,7 +80,8 @@ namespace JoelLow.NowPlaying
 		private Boolean checkVersion()
 		{
 			IMJVersionAutomation version = MediaCenterAutomation.GetVersion();
-			if (version.Major >= 14 && version.Minor >= 0 && version.Build >= 160)
+			if (version.Major == 14 && version.Minor >= 0 && version.Build >= 160 ||
+				version.Major > 14)
 			{
 				return true;
 			}
@@ -236,6 +237,13 @@ namespace JoelLow.NowPlaying
 			if (file == null)
 				return;
 
+			//If we are no longer listening to audio, we should unset what's playing now.
+			if (file.Get("Media Type", false) != "Audio") //Can be "Video" or "Image"
+			{
+				WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
+				return;
+			}
+
 			switch (MediaCenterAutomation.GetPlayback().State)
 			{
 				case MediaCenter.MJPlaybackStates.PLAYSTATE_PLAYING:
@@ -244,9 +252,6 @@ namespace JoelLow.NowPlaying
 						null, null);
 					break;
 				case MediaCenter.MJPlaybackStates.PLAYSTATE_STOPPED:
-					WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
-					break;
-				default:
 					WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
 					break;
 			}
