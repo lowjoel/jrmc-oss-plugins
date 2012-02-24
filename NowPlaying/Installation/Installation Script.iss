@@ -20,7 +20,8 @@ DirExistsWarning=No
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "Build Files\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ..\..\bin\Release\NowPlaying.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: ..\..\bin\Release\Interop.MediaCenter.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
