@@ -11,7 +11,7 @@
     <RootNamespace>JoelLow.NowPlaying</RootNamespace>
     <AssemblyName>NowPlaying</AssemblyName>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>CodeSigning.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Strong Name.snk</AssemblyOriginatorKeyFile>
     <StartupObject>
     </StartupObject>
     <FileUpgradeFlags>
