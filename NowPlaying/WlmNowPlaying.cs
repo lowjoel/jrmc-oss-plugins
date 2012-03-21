@@ -9,7 +9,7 @@ namespace JoelLow.NowPlaying
 		public static void SetNowPlaying(bool playing, string artist, string album, string title,
 			string trackDuration, string elapsedTrackTime)
 		{
-			string message = string.Format(@"\0{0}\0{1}\0{2}\0{3}\0{4}\0{5}\0{6}\0WMContentID\0" + '\0',
+			string message = string.Format(@"{0}\0{1}\0{2}\0{3}\0{4}\0{5}\0{6}\0WMContentID\0" + '\0',
 				string.Format("J. River Music Center {0} [NowPlaying Plugin]",	//Player
 					MainInterface.MediaCenterVersion.Version),
 				"Music",														//Category
