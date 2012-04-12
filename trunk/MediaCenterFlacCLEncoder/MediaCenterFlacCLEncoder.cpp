@@ -45,6 +45,6 @@ namespace MediaCenterFlacCLEncoder {
 
 	void MediaCenterFlacCLEncoder::Terminate()
 	{
-		Writer->Delete();
+		//Writer->Delete();
 	}
 }
