@@ -1,4 +1,5 @@
 #pragma once
+#include <vcclr.h>
 #include "JREncoder.h"
 
 namespace MediaCenterFlacCLEncoder {
@@ -26,5 +27,8 @@ namespace MediaCenterFlacCLEncoder {
 		//Settings, etc.
 		virtual BSTR GetInfo(LPCTSTR pName);
 		virtual BOOL SetInfo(LPCTSTR pName, LPCTSTR pValue);
+
+	private:
+		gcroot<ref class MediaCenterFlacCLEncoder^> Encoder;
 	};
 }
