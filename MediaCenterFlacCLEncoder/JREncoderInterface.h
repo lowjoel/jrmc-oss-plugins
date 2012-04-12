@@ -1,11 +1,22 @@
 #pragma once
+#include <map>
 #include <vcclr.h>
 #include "JREncoder.h"
 
 namespace MediaCenterFlacCLEncoder {
 	class MediaCenterFlacCLEncoderInterface : public IJREncoder
 	{
+	private:
+		struct wstring_comparer
+		{
+			bool operator()(const std::wstring& lhs, const std::wstring& rhs)
+			{
+				return wcscmp(lhs.c_str(), rhs.c_str()) < 0;
+			}
+		};
+
 	public:
+		MediaCenterFlacCLEncoderInterface();
 		virtual ~MediaCenterFlacCLEncoderInterface();
 
 		//File-based encoding: this is left unimplemented since we will implement
@@ -29,6 +40,10 @@ namespace MediaCenterFlacCLEncoder {
 		virtual BOOL SetInfo(LPCTSTR pName, LPCTSTR pValue);
 
 	private:
+		/// The handle to the encoder instance.
 		gcroot<ref class MediaCenterFlacCLEncoder^> Encoder;
+
+		/// Settings set by JRMC
+		std::map<std::wstring, std::wstring, wstring_comparer> Settings;
 	};
 }
