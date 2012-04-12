@@ -5,6 +5,17 @@
 
 #pragma unmanaged
 namespace MediaCenterFlacCLEncoder {
+	MediaCenterFlacCLEncoderInterface::MediaCenterFlacCLEncoderInterface()
+	{
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_VERSION,					L"1.0.0"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_DISPLAY_NAME,				L"FlacCL Encoder Plugin for Media Jukebox/Media Center"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_EXTENSION,				L"flac"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_ANY_FORMAT_FILE_INPUT,	L"false"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_WAV_FILE_INPUT,			L"true"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_BUFFER_INPUT,				L"true"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_UNCOMPRESSED_WAV_OUTPUT,	L"false"));
+	}
+
 	MediaCenterFlacCLEncoderInterface::~MediaCenterFlacCLEncoderInterface()
 	{
 	}
@@ -48,7 +59,8 @@ namespace MediaCenterFlacCLEncoder {
 
 	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(LPCTSTR pName, LPCTSTR pValue)
 	{
-		return FALSE;
+		Settings[pName] = pValue;
+		return TRUE;
 	}
 #pragma endregion
 
@@ -88,12 +100,13 @@ namespace MediaCenterFlacCLEncoder {
 		HRESULT returnCode = SELFREG_E_CLASS;
 		try
 		{
+			MediaCenterFlacCLEncoderInterface encoder;
 			RegSetStringValue(key, L"Company", L"Joel Low");
-			RegSetStringValue(key, L"Copyright", L"Copyright");
-			RegSetStringValue(key, L"Description", L"FlacCL Encoder Plugin for Media Jukebox/Media Center");
-			RegSetStringValue(key, L"Ext", L"flac");
+			RegSetStringValue(key, L"Copyright", L"Copyright 2012 Joel Low");
+			RegSetStringValue(key, L"Description", encoder.GetInfo(JR_ENCODER_INFO_DISPLAY_NAME));
+			RegSetStringValue(key, L"Ext", encoder.GetInfo(JR_ENCODER_INFO_EXTENSION));
 			RegSetStringValue(key, L"URL", L"http://joelsplace.sg");
-			RegSetStringValue(key, L"Version", L"1.0.0");
+			RegSetStringValue(key, L"Version", encoder.GetInfo(JR_ENCODER_INFO_VERSION));
 			returnCode = S_OK;
 		}
 		catch (DWORD error)
