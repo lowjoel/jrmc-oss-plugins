@@ -1,4 +1,5 @@
 #pragma once
+#include "JREncoderInterface.h"
 
 namespace MediaCenterFlacCLEncoder {
 	public ref class MediaCenterFlacCLEncoder
@@ -6,6 +7,9 @@ namespace MediaCenterFlacCLEncoder {
 	public:
 		MediaCenterFlacCLEncoder(System::String^ outPath,
 			CUETools::Codecs::AudioPCMConfig^ format);
+
+		/// Configures the encoder based on the provided configuration settings.
+		void Configure(const MediaCenterFlacCLEncoderInterface::Config& config);
 
 		void Write(array<System::Byte>^ data);
 		void Finish();
