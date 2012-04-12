@@ -103,8 +103,10 @@ namespace MediaCenterFlacCLEncoder {
 
 		AudioPCMConfig^ format = gcnew AudioPCMConfig(pwfeFormat->wBitsPerSample, pwfeFormat->nChannels,
 			pwfeFormat->nSamplesPerSec);
-		Encoder = gcnew MediaCenterFlacCLEncoder(
-			gcnew String(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME)), format);
+		String^ filePath = gcnew String(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME));
+		filePath += L'.' + gcnew String(GetInfo(JR_ENCODER_INFO_EXTENSION));
+		Encoder = gcnew MediaCenterFlacCLEncoder(filePath, format);
+		SetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME, filePath);
 		return TRUE;
 	}
 
@@ -135,9 +137,7 @@ namespace MediaCenterFlacCLEncoder {
 			LastError = e;
 		}
 
-		msclr::interop::marshal_context marshal;
-		std::wstring message(marshal.marshal_as<std::wstring>(LastError->Message));
-		SetInfo(JR_ENCODER_INFO_LAST_ERROR, message);
+		SetInfo(JR_ENCODER_INFO_LAST_ERROR, LastError->Message);
 		Encoder->Terminate();
 		return FALSE;
 	}
@@ -185,6 +185,15 @@ namespace MediaCenterFlacCLEncoder {
 		const std::wstring& pValue)
 	{
 		Settings[pName] = pValue;
+		return TRUE;
+	}
+
+	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(const std::wstring& pName, System::String^ pValue)
+	{
+		msclr::interop::marshal_context marshal;
+		std::wstring value(marshal.marshal_as<std::wstring>(pValue));
+
+		Settings[pName] = value;
 		return TRUE;
 	}
 #pragma endregion
