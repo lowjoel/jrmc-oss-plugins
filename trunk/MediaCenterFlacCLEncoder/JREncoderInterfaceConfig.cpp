@@ -1,6 +1,12 @@
 #include "Stdafx.h"
 #include "JREncoderInterface.h"
 
+namespace boost {
+namespace serialization {
+	template<class Archive>
+	void serialize(Archive& ar, std::pair<int, int>& pair, const unsigned int version);
+}
+}
 
 namespace MediaCenterFlacCLEncoder {
 	MediaCenterFlacCLEncoderInterface::Config::Config()
@@ -31,19 +37,59 @@ namespace MediaCenterFlacCLEncoder {
 
 	MediaCenterFlacCLEncoderInterface::Config::Config(const std::wstring& str)
 	{
-		if (str.length() * sizeof(wchar_t) >= sizeof(*this))
-		{
-			*this = *reinterpret_cast<const Config*>(&str[0]);
-		}
-		else
-		{
-			*this = Config();
-		}
+		std::wistringstream stream(str);
+		boost::archive::text_wiarchive archive(stream);
+
+		Config temp;
+		archive >> temp;
+
+		*this = temp;
 	}
 
 	MediaCenterFlacCLEncoderInterface::Config::operator std::wstring() const
 	{
-		return std::wstring(reinterpret_cast<const wchar_t*>(this),
-			sizeof(*this) / sizeof(wchar_t));
+		std::wostringstream result;
+		boost::archive::text_woarchive archive(result);
+
+		archive << *this;
+		return result.str();
 	}
+
+	template<typename Archive>
+	void MediaCenterFlacCLEncoderInterface::Config::serialize(Archive& ar, const unsigned int version)
+	{
+		ar & CompressionLevel;
+		ar & PaddingBytes;
+		ar & VerifyEncoding;
+		ar & ComputeMd5Hash;
+		ar & OffloadTasksToCpu;
+		ar & DoRiceEncoding;
+
+		ar & GpuWorkGroupSize;
+		ar & FramesPerMultiprocessor;
+		ar & AdditionalCpuThreads;
+		ar & BlockSize;
+		ar & TasksPerChannel;
+		ar & TasksPerWindow;
+		ar & StereoDecorrelationAlgorithm;
+		ar & WindowAlgorithm;
+		
+		ar & PartitionOrder;
+		ar & PredictionOrder;
+		ar & FixedOrder;
+		ar & Precision;
+
+		ar & UseCpuEmulation;
+	}
+}
+
+namespace boost {
+namespace serialization {
+	template<class Archive>
+	void serialize(Archive& ar, std::pair<int, int>& pair, const unsigned int version)
+	{
+		ar & pair.first;
+		ar & pair.second;
+	}
+}
 }
