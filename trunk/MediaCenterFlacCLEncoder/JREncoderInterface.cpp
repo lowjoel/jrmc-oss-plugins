@@ -50,4 +50,15 @@ namespace MediaCenterFlacCLEncoder {
 		return FALSE;
 	}
 #pragma endregion
+
+#pragma region CreateEncoder
+	/// Export your plugin from a DLL with a single export function CreateEncoder.  You
+	/// can put any number of encoders into a single DLL.  CreateEncoder(...) will be
+	/// called with the index 0, 1, 2, etc. until a NULL encoder is returned.
+	extern "C" __declspec(dllexport)
+	IJREncoder* CreateEncoder(int nIndex, IJREncoderCallback * pCallback)
+	{
+		return nullptr;
+	}
+#pragma endregion
 }
