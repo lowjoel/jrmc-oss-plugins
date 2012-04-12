@@ -156,6 +156,12 @@ namespace MediaCenterFlacCLEncoder {
 	BOOL MediaCenterFlacCLEncoderInterface::Options()
 	{
 		SettingsForm form;
+		BSTR config = GetInfo(JR_ENCODER_INFO_SETTINGS);
+		if (config && SysStringLen(config))
+		{
+			form.SetConfig(std::wstring(config, SysStringLen(config)));
+		}
+
 		if (form.ShowDialog() == DialogResult::OK)
 		{
 			Config config(form.GetConfig());

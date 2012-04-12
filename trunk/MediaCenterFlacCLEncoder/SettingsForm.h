@@ -221,28 +221,28 @@ namespace MediaCenterFlacCLEncoder {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->CompressionLevelLbl = (gcnew System::Windows::Forms::Label());
 			this->AdvancedSettings = (gcnew System::Windows::Forms::TabPage());
-			this->OkBtn = (gcnew System::Windows::Forms::Button());
-			this->CancelBtn = (gcnew System::Windows::Forms::Button());
-			this->ToolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->GroupSizeLbl = (gcnew System::Windows::Forms::Label());
+			this->ConstantEncodingChk = (gcnew System::Windows::Forms::CheckBox());
+			this->CompuetSeekTableChk = (gcnew System::Windows::Forms::CheckBox());
+			this->EstimateWindowChk = (gcnew System::Windows::Forms::CheckBox());
+			this->TasksPerChannelNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->TasksPerWindowNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->OpenCLSettings = (gcnew System::Windows::Forms::TabPage());
+			this->OpenCLDefinesLbl = (gcnew System::Windows::Forms::Label());
+			this->OpenCLPlatformLbl = (gcnew System::Windows::Forms::Label());
 			this->CpuEmulationChk = (gcnew System::Windows::Forms::CheckBox());
 			this->OpenCLDefinesTxt = (gcnew System::Windows::Forms::TextBox());
 			this->OpenCLPlatformTxt = (gcnew System::Windows::Forms::TextBox());
-			this->OpenCLPlatformLbl = (gcnew System::Windows::Forms::Label());
-			this->OpenCLDefinesLbl = (gcnew System::Windows::Forms::Label());
-			this->TasksPerWindowNum = (gcnew System::Windows::Forms::NumericUpDown());
-			this->TasksPerChannelNum = (gcnew System::Windows::Forms::NumericUpDown());
-			this->EstimateWindowChk = (gcnew System::Windows::Forms::CheckBox());
-			this->CompuetSeekTableChk = (gcnew System::Windows::Forms::CheckBox());
-			this->ConstantEncodingChk = (gcnew System::Windows::Forms::CheckBox());
-			this->GroupSizeLbl = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->OkBtn = (gcnew System::Windows::Forms::Button());
+			this->CancelBtn = (gcnew System::Windows::Forms::Button());
+			this->ToolTip = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->GroupSizeNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TaskSizeNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CpuThreadsNum))->BeginInit();
@@ -261,9 +261,9 @@ namespace MediaCenterFlacCLEncoder {
 			this->MainTabControl->SuspendLayout();
 			this->BasicSettings->SuspendLayout();
 			this->AdvancedSettings->SuspendLayout();
-			this->OpenCLSettings->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerWindowNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerChannelNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerWindowNum))->BeginInit();
+			this->OpenCLSettings->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// VerifyEncodingChk
@@ -665,27 +665,137 @@ namespace MediaCenterFlacCLEncoder {
 			this->AdvancedSettings->Text = L"Advanced Settings";
 			this->AdvancedSettings->UseVisualStyleBackColor = true;
 			// 
-			// OkBtn
+			// label15
 			// 
-			this->OkBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->OkBtn->Location = System::Drawing::Point(504, 367);
-			this->OkBtn->Name = L"OkBtn";
-			this->OkBtn->Size = System::Drawing::Size(75, 23);
-			this->OkBtn->TabIndex = 2;
-			this->OkBtn->Text = L"OK";
-			this->OkBtn->UseVisualStyleBackColor = true;
-			this->OkBtn->Click += gcnew System::EventHandler(this, &SettingsForm::OkBtn_Click);
+			this->label15->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(347, 36);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(135, 13);
+			this->label15->TabIndex = 27;
+			this->label15->Text = L"Window function algorithm:";
 			// 
-			// CancelBtn
+			// label14
 			// 
-			this->CancelBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->CancelBtn->DialogResult = System::Windows::Forms::DialogResult::Cancel;
-			this->CancelBtn->Location = System::Drawing::Point(585, 367);
-			this->CancelBtn->Name = L"CancelBtn";
-			this->CancelBtn->Size = System::Drawing::Size(75, 23);
-			this->CancelBtn->TabIndex = 3;
-			this->CancelBtn->Text = L"Cancel";
-			this->CancelBtn->UseVisualStyleBackColor = true;
+			this->label14->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(347, 9);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(150, 13);
+			this->label14->TabIndex = 26;
+			this->label14->Text = L"Stereo decorrelation algorithm:";
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Location = System::Drawing::Point(6, 232);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(99, 13);
+			this->label13->TabIndex = 25;
+			this->label13->Text = L"Tasks per Window:";
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(6, 206);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(100, 13);
+			this->label12->TabIndex = 24;
+			this->label12->Text = L"Tasks Per Channel:";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(6, 180);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(58, 13);
+			this->label11->TabIndex = 23;
+			this->label11->Text = L"Block size:";
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(6, 154);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(140, 13);
+			this->label10->TabIndex = 22;
+			this->label10->Text = L"Use additional CPU threads:";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(6, 128);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(198, 13);
+			this->label7->TabIndex = 21;
+			this->label7->Text = L"Set number of frames per multiprocessor:";
+			// 
+			// GroupSizeLbl
+			// 
+			this->GroupSizeLbl->AutoSize = true;
+			this->GroupSizeLbl->Location = System::Drawing::Point(6, 102);
+			this->GroupSizeLbl->Name = L"GroupSizeLbl";
+			this->GroupSizeLbl->Size = System::Drawing::Size(192, 13);
+			this->GroupSizeLbl->TabIndex = 20;
+			this->GroupSizeLbl->Text = L"Set GPU work group size (64,128,256):";
+			// 
+			// ConstantEncodingChk
+			// 
+			this->ConstantEncodingChk->AutoSize = true;
+			this->ConstantEncodingChk->Checked = true;
+			this->ConstantEncodingChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
+			this->ConstantEncodingChk->Location = System::Drawing::Point(6, 77);
+			this->ConstantEncodingChk->Name = L"ConstantEncodingChk";
+			this->ConstantEncodingChk->Size = System::Drawing::Size(196, 17);
+			this->ConstantEncodingChk->TabIndex = 19;
+			this->ConstantEncodingChk->Text = L"Detect and encode constant frames";
+			this->ConstantEncodingChk->ThreeState = true;
+			this->ConstantEncodingChk->UseVisualStyleBackColor = true;
+			// 
+			// CompuetSeekTableChk
+			// 
+			this->CompuetSeekTableChk->AutoSize = true;
+			this->CompuetSeekTableChk->Checked = true;
+			this->CompuetSeekTableChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
+			this->CompuetSeekTableChk->Location = System::Drawing::Point(6, 54);
+			this->CompuetSeekTableChk->Name = L"CompuetSeekTableChk";
+			this->CompuetSeekTableChk->Size = System::Drawing::Size(126, 17);
+			this->CompuetSeekTableChk->TabIndex = 18;
+			this->CompuetSeekTableChk->Text = L"Compute Seek Table";
+			this->CompuetSeekTableChk->ThreeState = true;
+			this->CompuetSeekTableChk->UseVisualStyleBackColor = true;
+			// 
+			// EstimateWindowChk
+			// 
+			this->EstimateWindowChk->AutoSize = true;
+			this->EstimateWindowChk->Checked = true;
+			this->EstimateWindowChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
+			this->EstimateWindowChk->Location = System::Drawing::Point(6, 31);
+			this->EstimateWindowChk->Name = L"EstimateWindowChk";
+			this->EstimateWindowChk->Size = System::Drawing::Size(108, 17);
+			this->EstimateWindowChk->TabIndex = 17;
+			this->EstimateWindowChk->Text = L"Estimate Window";
+			this->EstimateWindowChk->ThreeState = true;
+			this->EstimateWindowChk->UseVisualStyleBackColor = true;
+			// 
+			// TasksPerChannelNum
+			// 
+			this->TasksPerChannelNum->Location = System::Drawing::Point(220, 204);
+			this->TasksPerChannelNum->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
+			this->TasksPerChannelNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
+			this->TasksPerChannelNum->Name = L"TasksPerChannelNum";
+			this->TasksPerChannelNum->Size = System::Drawing::Size(120, 20);
+			this->TasksPerChannelNum->TabIndex = 16;
+			this->TasksPerChannelNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
+			// 
+			// TasksPerWindowNum
+			// 
+			this->TasksPerWindowNum->Location = System::Drawing::Point(220, 230);
+			this->TasksPerWindowNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
+			this->TasksPerWindowNum->Name = L"TasksPerWindowNum";
+			this->TasksPerWindowNum->Size = System::Drawing::Size(120, 20);
+			this->TasksPerWindowNum->TabIndex = 15;
+			this->TasksPerWindowNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// OpenCLSettings
 			// 
@@ -701,6 +811,24 @@ namespace MediaCenterFlacCLEncoder {
 			this->OpenCLSettings->TabIndex = 2;
 			this->OpenCLSettings->Text = L"OpenCL Settings";
 			this->OpenCLSettings->UseVisualStyleBackColor = true;
+			// 
+			// OpenCLDefinesLbl
+			// 
+			this->OpenCLDefinesLbl->AutoSize = true;
+			this->OpenCLDefinesLbl->Location = System::Drawing::Point(6, 9);
+			this->OpenCLDefinesLbl->Name = L"OpenCLDefinesLbl";
+			this->OpenCLDefinesLbl->Size = System::Drawing::Size(126, 13);
+			this->OpenCLDefinesLbl->TabIndex = 1;
+			this->OpenCLDefinesLbl->Text = L"OpenCL Compile defines:";
+			// 
+			// OpenCLPlatformLbl
+			// 
+			this->OpenCLPlatformLbl->AutoSize = true;
+			this->OpenCLPlatformLbl->Location = System::Drawing::Point(6, 35);
+			this->OpenCLPlatformLbl->Name = L"OpenCLPlatformLbl";
+			this->OpenCLPlatformLbl->Size = System::Drawing::Size(112, 13);
+			this->OpenCLPlatformLbl->TabIndex = 3;
+			this->OpenCLPlatformLbl->Text = L"Use OpenCL Platform:";
 			// 
 			// CpuEmulationChk
 			// 
@@ -730,155 +858,27 @@ namespace MediaCenterFlacCLEncoder {
 			this->OpenCLPlatformTxt->Size = System::Drawing::Size(500, 20);
 			this->OpenCLPlatformTxt->TabIndex = 4;
 			// 
-			// OpenCLPlatformLbl
+			// OkBtn
 			// 
-			this->OpenCLPlatformLbl->AutoSize = true;
-			this->OpenCLPlatformLbl->Location = System::Drawing::Point(6, 35);
-			this->OpenCLPlatformLbl->Name = L"OpenCLPlatformLbl";
-			this->OpenCLPlatformLbl->Size = System::Drawing::Size(112, 13);
-			this->OpenCLPlatformLbl->TabIndex = 3;
-			this->OpenCLPlatformLbl->Text = L"Use OpenCL Platform:";
+			this->OkBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->OkBtn->Location = System::Drawing::Point(504, 367);
+			this->OkBtn->Name = L"OkBtn";
+			this->OkBtn->Size = System::Drawing::Size(75, 23);
+			this->OkBtn->TabIndex = 2;
+			this->OkBtn->Text = L"OK";
+			this->OkBtn->UseVisualStyleBackColor = true;
+			this->OkBtn->Click += gcnew System::EventHandler(this, &SettingsForm::OkBtn_Click);
 			// 
-			// OpenCLDefinesLbl
+			// CancelBtn
 			// 
-			this->OpenCLDefinesLbl->AutoSize = true;
-			this->OpenCLDefinesLbl->Location = System::Drawing::Point(6, 9);
-			this->OpenCLDefinesLbl->Name = L"OpenCLDefinesLbl";
-			this->OpenCLDefinesLbl->Size = System::Drawing::Size(126, 13);
-			this->OpenCLDefinesLbl->TabIndex = 1;
-			this->OpenCLDefinesLbl->Text = L"OpenCL Compile defines:";
-			// 
-			// TasksPerWindowNum
-			// 
-			this->TasksPerWindowNum->Location = System::Drawing::Point(220, 230);
-			this->TasksPerWindowNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
-			this->TasksPerWindowNum->Name = L"TasksPerWindowNum";
-			this->TasksPerWindowNum->Size = System::Drawing::Size(120, 20);
-			this->TasksPerWindowNum->TabIndex = 15;
-			this->TasksPerWindowNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
-			// 
-			// TasksPerChannelNum
-			// 
-			this->TasksPerChannelNum->Location = System::Drawing::Point(220, 204);
-			this->TasksPerChannelNum->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
-			this->TasksPerChannelNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
-			this->TasksPerChannelNum->Name = L"TasksPerChannelNum";
-			this->TasksPerChannelNum->Size = System::Drawing::Size(120, 20);
-			this->TasksPerChannelNum->TabIndex = 16;
-			this->TasksPerChannelNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
-			// 
-			// EstimateWindowChk
-			// 
-			this->EstimateWindowChk->AutoSize = true;
-			this->EstimateWindowChk->Checked = true;
-			this->EstimateWindowChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
-			this->EstimateWindowChk->Location = System::Drawing::Point(6, 31);
-			this->EstimateWindowChk->Name = L"EstimateWindowChk";
-			this->EstimateWindowChk->Size = System::Drawing::Size(108, 17);
-			this->EstimateWindowChk->TabIndex = 17;
-			this->EstimateWindowChk->Text = L"Estimate Window";
-			this->EstimateWindowChk->ThreeState = true;
-			this->EstimateWindowChk->UseVisualStyleBackColor = true;
-			// 
-			// CompuetSeekTableChk
-			// 
-			this->CompuetSeekTableChk->AutoSize = true;
-			this->CompuetSeekTableChk->Checked = true;
-			this->CompuetSeekTableChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
-			this->CompuetSeekTableChk->Location = System::Drawing::Point(6, 54);
-			this->CompuetSeekTableChk->Name = L"CompuetSeekTableChk";
-			this->CompuetSeekTableChk->Size = System::Drawing::Size(126, 17);
-			this->CompuetSeekTableChk->TabIndex = 18;
-			this->CompuetSeekTableChk->Text = L"Compute Seek Table";
-			this->CompuetSeekTableChk->ThreeState = true;
-			this->CompuetSeekTableChk->UseVisualStyleBackColor = true;
-			// 
-			// ConstantEncodingChk
-			// 
-			this->ConstantEncodingChk->AutoSize = true;
-			this->ConstantEncodingChk->Checked = true;
-			this->ConstantEncodingChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
-			this->ConstantEncodingChk->Location = System::Drawing::Point(6, 77);
-			this->ConstantEncodingChk->Name = L"ConstantEncodingChk";
-			this->ConstantEncodingChk->Size = System::Drawing::Size(196, 17);
-			this->ConstantEncodingChk->TabIndex = 19;
-			this->ConstantEncodingChk->Text = L"Detect and encode constant frames";
-			this->ConstantEncodingChk->ThreeState = true;
-			this->ConstantEncodingChk->UseVisualStyleBackColor = true;
-			// 
-			// GroupSizeLbl
-			// 
-			this->GroupSizeLbl->AutoSize = true;
-			this->GroupSizeLbl->Location = System::Drawing::Point(6, 102);
-			this->GroupSizeLbl->Name = L"GroupSizeLbl";
-			this->GroupSizeLbl->Size = System::Drawing::Size(192, 13);
-			this->GroupSizeLbl->TabIndex = 20;
-			this->GroupSizeLbl->Text = L"Set GPU work group size (64,128,256):";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(6, 128);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(198, 13);
-			this->label7->TabIndex = 21;
-			this->label7->Text = L"Set number of frames per multiprocessor:";
-			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(6, 154);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(140, 13);
-			this->label10->TabIndex = 22;
-			this->label10->Text = L"Use additional CPU threads:";
-			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(6, 180);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(58, 13);
-			this->label11->TabIndex = 23;
-			this->label11->Text = L"Block size:";
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(6, 206);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(100, 13);
-			this->label12->TabIndex = 24;
-			this->label12->Text = L"Tasks Per Channel:";
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(6, 232);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(99, 13);
-			this->label13->TabIndex = 25;
-			this->label13->Text = L"Tasks per Window:";
-			// 
-			// label14
-			// 
-			this->label14->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(347, 9);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(150, 13);
-			this->label14->TabIndex = 26;
-			this->label14->Text = L"Stereo decorrelation algorithm:";
-			// 
-			// label15
-			// 
-			this->label15->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(347, 36);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(135, 13);
-			this->label15->TabIndex = 27;
-			this->label15->Text = L"Window function algorithm:";
+			this->CancelBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->CancelBtn->DialogResult = System::Windows::Forms::DialogResult::Cancel;
+			this->CancelBtn->Location = System::Drawing::Point(585, 367);
+			this->CancelBtn->Name = L"CancelBtn";
+			this->CancelBtn->Size = System::Drawing::Size(75, 23);
+			this->CancelBtn->TabIndex = 3;
+			this->CancelBtn->Text = L"Cancel";
+			this->CancelBtn->UseVisualStyleBackColor = true;
 			// 
 			// SettingsForm
 			// 
@@ -916,15 +916,17 @@ namespace MediaCenterFlacCLEncoder {
 			this->BasicSettings->PerformLayout();
 			this->AdvancedSettings->ResumeLayout(false);
 			this->AdvancedSettings->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerChannelNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerWindowNum))->EndInit();
 			this->OpenCLSettings->ResumeLayout(false);
 			this->OpenCLSettings->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerWindowNum))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TasksPerChannelNum))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void OkBtn_Click(System::Object^  sender, System::EventArgs^  e) {
-			 }
+private: System::Void OkBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			 DialogResult = System::Windows::Forms::DialogResult::OK;
+			 Close();
+		 }
 };
 }
