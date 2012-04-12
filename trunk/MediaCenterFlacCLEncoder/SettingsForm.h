@@ -47,7 +47,7 @@ namespace MediaCenterFlacCLEncoder {
 			result.StereoDecorrelationAlgorithm;
 			result.WindowAlgorithm;
 
-			result.PartitionOrder;
+			result.PartitionOrder = std::pair<int, int>((Int32), (Int32));
 			result.PredictionOrder;
 			result.FixedOrder;
 			result.Precision;
@@ -137,20 +137,34 @@ namespace MediaCenterFlacCLEncoder {
 	private: System::Windows::Forms::ComboBox^  StereoDecorrelationCmb;
 	private: System::Windows::Forms::ComboBox^  WindowFunctionCmb;
 	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
-	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::Label^  label6;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown8;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown7;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown6;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown5;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown4;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown3;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown2;
-	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
+private: System::Windows::Forms::Label^  minimumLbl;
+private: System::Windows::Forms::Label^  maximumLbl;
+private: System::Windows::Forms::Label^  PartitionOrderLbl;
+private: System::Windows::Forms::Label^  PredictionOrderLbl;
+private: System::Windows::Forms::Label^  FixedOrderLbl;
+private: System::Windows::Forms::Label^  PrecisionLbl;
+private: System::Windows::Forms::NumericUpDown^  PrecisionMaxNum;
+
+
+
+
+
+
+
+private: System::Windows::Forms::NumericUpDown^  PrecisionMinNum;
+
+private: System::Windows::Forms::NumericUpDown^  FixedOrderMaxNum;
+
+private: System::Windows::Forms::NumericUpDown^  FixedOrderMinNum;
+
+private: System::Windows::Forms::NumericUpDown^  PredictionOrderMaxNum;
+
+private: System::Windows::Forms::NumericUpDown^  PredictionOrderMinNum;
+
+private: System::Windows::Forms::NumericUpDown^  PartitionOrderMaxNum;
+
+private: System::Windows::Forms::NumericUpDown^  PartitionOrderMinNum;
+
 	private: System::Windows::Forms::NumericUpDown^  BlockSizeNum;
 	private: System::Windows::Forms::NumericUpDown^  PaddingBytesNum;
 	private: System::Windows::Forms::TabControl^  MainTabControl;
@@ -158,8 +172,10 @@ namespace MediaCenterFlacCLEncoder {
 	private: System::Windows::Forms::TabPage^  AdvancedSettings;
 	private: System::Windows::Forms::Button^  OkBtn;
 	private: System::Windows::Forms::Button^  CancelBtn;
-	private: System::Windows::Forms::Label^  label9;
-	private: System::Windows::Forms::Label^  label8;
+private: System::Windows::Forms::Label^  fastestEncodingLbl;
+private: System::Windows::Forms::Label^  slowestEncodingLbl;
+
+
 	private: System::Windows::Forms::Label^  CompressionLevelLbl;
 	private: System::Windows::Forms::Label^  PaddingBytesLbl;
 	private: System::Windows::Forms::ToolTip^  ToolTip;
@@ -179,13 +195,25 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 	private: System::Windows::Forms::NumericUpDown^  TasksPerChannelNum;
 	private: System::Windows::Forms::NumericUpDown^  TasksPerWindowNum;
 	private: System::Windows::Forms::Label^  GroupSizeLbl;
-	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::Label^  label11;
-	private: System::Windows::Forms::Label^  label10;
-	private: System::Windows::Forms::Label^  label13;
-	private: System::Windows::Forms::Label^  label12;
-	private: System::Windows::Forms::Label^  label15;
-	private: System::Windows::Forms::Label^  label14;
+private: System::Windows::Forms::Label^  TaskSizeLbl;
+private: System::Windows::Forms::Label^  BlockSizeLbl;
+
+
+private: System::Windows::Forms::Label^  CpuThreadsLbl;
+
+private: System::Windows::Forms::Label^  TasksPerWindowLbl;
+private: System::Windows::Forms::Label^  TasksPerChannelLbl;
+
+
+private: System::Windows::Forms::Label^  WindowFunctionLbl;
+
+
+
+
+
+private: System::Windows::Forms::Label^  StereoDecorrelationLbl;
+
+
 	private: System::ComponentModel::IContainer^  components;
 
 	private:
@@ -214,36 +242,36 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			this->StereoDecorrelationCmb = (gcnew System::Windows::Forms::ComboBox());
 			this->WindowFunctionCmb = (gcnew System::Windows::Forms::ComboBox());
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown8 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown7 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown6 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown5 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown4 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown3 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown2 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->minimumLbl = (gcnew System::Windows::Forms::Label());
+			this->maximumLbl = (gcnew System::Windows::Forms::Label());
+			this->PartitionOrderLbl = (gcnew System::Windows::Forms::Label());
+			this->PredictionOrderLbl = (gcnew System::Windows::Forms::Label());
+			this->FixedOrderLbl = (gcnew System::Windows::Forms::Label());
+			this->PrecisionLbl = (gcnew System::Windows::Forms::Label());
+			this->PrecisionMaxNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->PrecisionMinNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->FixedOrderMaxNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->FixedOrderMinNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->PredictionOrderMaxNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->PredictionOrderMinNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->PartitionOrderMaxNum = (gcnew System::Windows::Forms::NumericUpDown());
+			this->PartitionOrderMinNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->BlockSizeNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->PaddingBytesNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->MainTabControl = (gcnew System::Windows::Forms::TabControl());
 			this->BasicSettings = (gcnew System::Windows::Forms::TabPage());
 			this->PaddingBytesLbl = (gcnew System::Windows::Forms::Label());
-			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->fastestEncodingLbl = (gcnew System::Windows::Forms::Label());
+			this->slowestEncodingLbl = (gcnew System::Windows::Forms::Label());
 			this->CompressionLevelLbl = (gcnew System::Windows::Forms::Label());
 			this->AdvancedSettings = (gcnew System::Windows::Forms::TabPage());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->WindowFunctionLbl = (gcnew System::Windows::Forms::Label());
+			this->StereoDecorrelationLbl = (gcnew System::Windows::Forms::Label());
+			this->TasksPerWindowLbl = (gcnew System::Windows::Forms::Label());
+			this->TasksPerChannelLbl = (gcnew System::Windows::Forms::Label());
+			this->BlockSizeLbl = (gcnew System::Windows::Forms::Label());
+			this->CpuThreadsLbl = (gcnew System::Windows::Forms::Label());
+			this->TaskSizeLbl = (gcnew System::Windows::Forms::Label());
 			this->GroupSizeLbl = (gcnew System::Windows::Forms::Label());
 			this->ConstantFramesEncodingChk = (gcnew System::Windows::Forms::CheckBox());
 			this->ComputeSeekTableChk = (gcnew System::Windows::Forms::CheckBox());
@@ -264,14 +292,14 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CpuThreadsNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CompressionLevelSlider))->BeginInit();
 			this->tableLayoutPanel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown8))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown7))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown6))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PrecisionMaxNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PrecisionMinNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->FixedOrderMaxNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->FixedOrderMinNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PredictionOrderMaxNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PredictionOrderMinNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PartitionOrderMaxNum))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PartitionOrderMinNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->BlockSizeNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PaddingBytesNum))->BeginInit();
 			this->MainTabControl->SuspendLayout();
@@ -408,20 +436,20 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 				50)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent, 
 				50)));
-			this->tableLayoutPanel1->Controls->Add(this->label1, 1, 0);
-			this->tableLayoutPanel1->Controls->Add(this->label2, 2, 0);
-			this->tableLayoutPanel1->Controls->Add(this->label3, 0, 1);
-			this->tableLayoutPanel1->Controls->Add(this->label4, 0, 2);
-			this->tableLayoutPanel1->Controls->Add(this->label5, 0, 3);
-			this->tableLayoutPanel1->Controls->Add(this->label6, 0, 4);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown8, 2, 4);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown7, 1, 4);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown6, 2, 3);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown5, 1, 3);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown4, 2, 2);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown3, 1, 2);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown2, 2, 1);
-			this->tableLayoutPanel1->Controls->Add(this->numericUpDown1, 1, 1);
+			this->tableLayoutPanel1->Controls->Add(this->minimumLbl, 1, 0);
+			this->tableLayoutPanel1->Controls->Add(this->maximumLbl, 2, 0);
+			this->tableLayoutPanel1->Controls->Add(this->PartitionOrderLbl, 0, 1);
+			this->tableLayoutPanel1->Controls->Add(this->PredictionOrderLbl, 0, 2);
+			this->tableLayoutPanel1->Controls->Add(this->FixedOrderLbl, 0, 3);
+			this->tableLayoutPanel1->Controls->Add(this->PrecisionLbl, 0, 4);
+			this->tableLayoutPanel1->Controls->Add(this->PrecisionMaxNum, 2, 4);
+			this->tableLayoutPanel1->Controls->Add(this->PrecisionMinNum, 1, 4);
+			this->tableLayoutPanel1->Controls->Add(this->FixedOrderMaxNum, 2, 3);
+			this->tableLayoutPanel1->Controls->Add(this->FixedOrderMinNum, 1, 3);
+			this->tableLayoutPanel1->Controls->Add(this->PredictionOrderMaxNum, 2, 2);
+			this->tableLayoutPanel1->Controls->Add(this->PredictionOrderMinNum, 1, 2);
+			this->tableLayoutPanel1->Controls->Add(this->PartitionOrderMaxNum, 2, 1);
+			this->tableLayoutPanel1->Controls->Add(this->PartitionOrderMinNum, 1, 1);
 			this->tableLayoutPanel1->Location = System::Drawing::Point(350, 75);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			this->tableLayoutPanel1->RowCount = 6;
@@ -434,131 +462,131 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			this->tableLayoutPanel1->Size = System::Drawing::Size(287, 129);
 			this->tableLayoutPanel1->TabIndex = 14;
 			// 
-			// label1
+			// minimumLbl
 			// 
-			this->label1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label1->Location = System::Drawing::Point(95, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(91, 22);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Minimum";
-			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->minimumLbl->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->minimumLbl->Location = System::Drawing::Point(95, 0);
+			this->minimumLbl->Name = L"minimumLbl";
+			this->minimumLbl->Size = System::Drawing::Size(91, 22);
+			this->minimumLbl->TabIndex = 0;
+			this->minimumLbl->Text = L"Minimum";
+			this->minimumLbl->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
-			// label2
+			// maximumLbl
 			// 
-			this->label2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label2->Location = System::Drawing::Point(192, 0);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(92, 22);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Maximum";
-			this->label2->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->maximumLbl->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->maximumLbl->Location = System::Drawing::Point(192, 0);
+			this->maximumLbl->Name = L"maximumLbl";
+			this->maximumLbl->Size = System::Drawing::Size(92, 22);
+			this->maximumLbl->TabIndex = 1;
+			this->maximumLbl->Text = L"Maximum";
+			this->maximumLbl->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
-			// label3
+			// PartitionOrderLbl
 			// 
-			this->label3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label3->Location = System::Drawing::Point(3, 22);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(86, 26);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"Partition Order:";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->PartitionOrderLbl->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PartitionOrderLbl->Location = System::Drawing::Point(3, 22);
+			this->PartitionOrderLbl->Name = L"PartitionOrderLbl";
+			this->PartitionOrderLbl->Size = System::Drawing::Size(86, 26);
+			this->PartitionOrderLbl->TabIndex = 2;
+			this->PartitionOrderLbl->Text = L"Partition Order:";
+			this->PartitionOrderLbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
-			// label4
+			// PredictionOrderLbl
 			// 
-			this->label4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label4->Location = System::Drawing::Point(3, 48);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(86, 26);
-			this->label4->TabIndex = 5;
-			this->label4->Text = L"Prediction Order:";
-			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->PredictionOrderLbl->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PredictionOrderLbl->Location = System::Drawing::Point(3, 48);
+			this->PredictionOrderLbl->Name = L"PredictionOrderLbl";
+			this->PredictionOrderLbl->Size = System::Drawing::Size(86, 26);
+			this->PredictionOrderLbl->TabIndex = 5;
+			this->PredictionOrderLbl->Text = L"Prediction Order:";
+			this->PredictionOrderLbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
-			// label5
+			// FixedOrderLbl
 			// 
-			this->label5->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label5->Location = System::Drawing::Point(3, 74);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(86, 26);
-			this->label5->TabIndex = 8;
-			this->label5->Text = L"Fixed Order:";
-			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->FixedOrderLbl->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->FixedOrderLbl->Location = System::Drawing::Point(3, 74);
+			this->FixedOrderLbl->Name = L"FixedOrderLbl";
+			this->FixedOrderLbl->Size = System::Drawing::Size(86, 26);
+			this->FixedOrderLbl->TabIndex = 8;
+			this->FixedOrderLbl->Text = L"Fixed Order:";
+			this->FixedOrderLbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
-			// label6
+			// PrecisionLbl
 			// 
-			this->label6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->label6->Location = System::Drawing::Point(3, 100);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(86, 26);
-			this->label6->TabIndex = 11;
-			this->label6->Text = L"Precision:";
-			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->PrecisionLbl->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PrecisionLbl->Location = System::Drawing::Point(3, 100);
+			this->PrecisionLbl->Name = L"PrecisionLbl";
+			this->PrecisionLbl->Size = System::Drawing::Size(86, 26);
+			this->PrecisionLbl->TabIndex = 11;
+			this->PrecisionLbl->Text = L"Precision:";
+			this->PrecisionLbl->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
-			// numericUpDown8
+			// PrecisionMaxNum
 			// 
-			this->numericUpDown8->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown8->Location = System::Drawing::Point(192, 103);
-			this->numericUpDown8->Name = L"numericUpDown8";
-			this->numericUpDown8->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown8->TabIndex = 13;
+			this->PrecisionMaxNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PrecisionMaxNum->Location = System::Drawing::Point(192, 103);
+			this->PrecisionMaxNum->Name = L"PrecisionMaxNum";
+			this->PrecisionMaxNum->Size = System::Drawing::Size(92, 20);
+			this->PrecisionMaxNum->TabIndex = 13;
 			// 
-			// numericUpDown7
+			// PrecisionMinNum
 			// 
-			this->numericUpDown7->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown7->Location = System::Drawing::Point(95, 103);
-			this->numericUpDown7->Name = L"numericUpDown7";
-			this->numericUpDown7->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown7->TabIndex = 12;
+			this->PrecisionMinNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PrecisionMinNum->Location = System::Drawing::Point(95, 103);
+			this->PrecisionMinNum->Name = L"PrecisionMinNum";
+			this->PrecisionMinNum->Size = System::Drawing::Size(91, 20);
+			this->PrecisionMinNum->TabIndex = 12;
 			// 
-			// numericUpDown6
+			// FixedOrderMaxNum
 			// 
-			this->numericUpDown6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown6->Location = System::Drawing::Point(192, 77);
-			this->numericUpDown6->Name = L"numericUpDown6";
-			this->numericUpDown6->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown6->TabIndex = 10;
+			this->FixedOrderMaxNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->FixedOrderMaxNum->Location = System::Drawing::Point(192, 77);
+			this->FixedOrderMaxNum->Name = L"FixedOrderMaxNum";
+			this->FixedOrderMaxNum->Size = System::Drawing::Size(92, 20);
+			this->FixedOrderMaxNum->TabIndex = 10;
 			// 
-			// numericUpDown5
+			// FixedOrderMinNum
 			// 
-			this->numericUpDown5->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown5->Location = System::Drawing::Point(95, 77);
-			this->numericUpDown5->Name = L"numericUpDown5";
-			this->numericUpDown5->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown5->TabIndex = 9;
+			this->FixedOrderMinNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->FixedOrderMinNum->Location = System::Drawing::Point(95, 77);
+			this->FixedOrderMinNum->Name = L"FixedOrderMinNum";
+			this->FixedOrderMinNum->Size = System::Drawing::Size(91, 20);
+			this->FixedOrderMinNum->TabIndex = 9;
 			// 
-			// numericUpDown4
+			// PredictionOrderMaxNum
 			// 
-			this->numericUpDown4->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown4->Location = System::Drawing::Point(192, 51);
-			this->numericUpDown4->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
-			this->numericUpDown4->Name = L"numericUpDown4";
-			this->numericUpDown4->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown4->TabIndex = 7;
+			this->PredictionOrderMaxNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PredictionOrderMaxNum->Location = System::Drawing::Point(192, 51);
+			this->PredictionOrderMaxNum->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
+			this->PredictionOrderMaxNum->Name = L"PredictionOrderMaxNum";
+			this->PredictionOrderMaxNum->Size = System::Drawing::Size(92, 20);
+			this->PredictionOrderMaxNum->TabIndex = 7;
 			// 
-			// numericUpDown3
+			// PredictionOrderMinNum
 			// 
-			this->numericUpDown3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown3->Location = System::Drawing::Point(95, 51);
-			this->numericUpDown3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
-			this->numericUpDown3->Name = L"numericUpDown3";
-			this->numericUpDown3->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown3->TabIndex = 6;
+			this->PredictionOrderMinNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PredictionOrderMinNum->Location = System::Drawing::Point(95, 51);
+			this->PredictionOrderMinNum->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
+			this->PredictionOrderMinNum->Name = L"PredictionOrderMinNum";
+			this->PredictionOrderMinNum->Size = System::Drawing::Size(91, 20);
+			this->PredictionOrderMinNum->TabIndex = 6;
 			// 
-			// numericUpDown2
+			// PartitionOrderMaxNum
 			// 
-			this->numericUpDown2->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown2->Location = System::Drawing::Point(192, 25);
-			this->numericUpDown2->Name = L"numericUpDown2";
-			this->numericUpDown2->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown2->TabIndex = 4;
+			this->PartitionOrderMaxNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PartitionOrderMaxNum->Location = System::Drawing::Point(192, 25);
+			this->PartitionOrderMaxNum->Name = L"PartitionOrderMaxNum";
+			this->PartitionOrderMaxNum->Size = System::Drawing::Size(92, 20);
+			this->PartitionOrderMaxNum->TabIndex = 4;
 			// 
-			// numericUpDown1
+			// PartitionOrderMinNum
 			// 
-			this->numericUpDown1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->numericUpDown1->Location = System::Drawing::Point(95, 25);
-			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown1->TabIndex = 3;
+			this->PartitionOrderMinNum->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->PartitionOrderMinNum->Location = System::Drawing::Point(95, 25);
+			this->PartitionOrderMinNum->Name = L"PartitionOrderMinNum";
+			this->PartitionOrderMinNum->Size = System::Drawing::Size(91, 20);
+			this->PartitionOrderMinNum->TabIndex = 3;
 			// 
 			// BlockSizeNum
 			// 
@@ -594,8 +622,8 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			// BasicSettings
 			// 
 			this->BasicSettings->Controls->Add(this->PaddingBytesLbl);
-			this->BasicSettings->Controls->Add(this->label9);
-			this->BasicSettings->Controls->Add(this->label8);
+			this->BasicSettings->Controls->Add(this->fastestEncodingLbl);
+			this->BasicSettings->Controls->Add(this->slowestEncodingLbl);
 			this->BasicSettings->Controls->Add(this->CompressionLevelLbl);
 			this->BasicSettings->Controls->Add(this->VerifyEncodingChk);
 			this->BasicSettings->Controls->Add(this->PaddingBytesNum);
@@ -620,26 +648,26 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			this->PaddingBytesLbl->TabIndex = 5;
 			this->PaddingBytesLbl->Text = L"Padding bytes:";
 			// 
-			// label9
+			// fastestEncodingLbl
 			// 
-			this->label9->AutoSize = true;
-			this->label9->ForeColor = System::Drawing::SystemColors::InactiveCaptionText;
-			this->label9->Location = System::Drawing::Point(112, 39);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(162, 13);
-			this->label9->TabIndex = 3;
-			this->label9->Text = L"Fastest encoding (largest filesize)";
+			this->fastestEncodingLbl->AutoSize = true;
+			this->fastestEncodingLbl->ForeColor = System::Drawing::SystemColors::InactiveCaptionText;
+			this->fastestEncodingLbl->Location = System::Drawing::Point(112, 39);
+			this->fastestEncodingLbl->Name = L"fastestEncodingLbl";
+			this->fastestEncodingLbl->Size = System::Drawing::Size(162, 13);
+			this->fastestEncodingLbl->TabIndex = 3;
+			this->fastestEncodingLbl->Text = L"Fastest encoding (largest filesize)";
 			// 
-			// label8
+			// slowestEncodingLbl
 			// 
-			this->label8->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->label8->AutoSize = true;
-			this->label8->ForeColor = System::Drawing::SystemColors::InactiveCaptionText;
-			this->label8->Location = System::Drawing::Point(467, 39);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(171, 13);
-			this->label8->TabIndex = 4;
-			this->label8->Text = L"Slowest encoding (smallest filesize)";
+			this->slowestEncodingLbl->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->slowestEncodingLbl->AutoSize = true;
+			this->slowestEncodingLbl->ForeColor = System::Drawing::SystemColors::InactiveCaptionText;
+			this->slowestEncodingLbl->Location = System::Drawing::Point(467, 39);
+			this->slowestEncodingLbl->Name = L"slowestEncodingLbl";
+			this->slowestEncodingLbl->Size = System::Drawing::Size(171, 13);
+			this->slowestEncodingLbl->TabIndex = 4;
+			this->slowestEncodingLbl->Text = L"Slowest encoding (smallest filesize)";
 			// 
 			// CompressionLevelLbl
 			// 
@@ -652,14 +680,14 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			// 
 			// AdvancedSettings
 			// 
-			this->AdvancedSettings->Controls->Add(this->label15);
-			this->AdvancedSettings->Controls->Add(this->label14);
-			this->AdvancedSettings->Controls->Add(this->label13);
+			this->AdvancedSettings->Controls->Add(this->WindowFunctionLbl);
+			this->AdvancedSettings->Controls->Add(this->StereoDecorrelationLbl);
+			this->AdvancedSettings->Controls->Add(this->TasksPerWindowLbl);
 			this->AdvancedSettings->Controls->Add(this->tableLayoutPanel1);
-			this->AdvancedSettings->Controls->Add(this->label12);
-			this->AdvancedSettings->Controls->Add(this->label11);
-			this->AdvancedSettings->Controls->Add(this->label10);
-			this->AdvancedSettings->Controls->Add(this->label7);
+			this->AdvancedSettings->Controls->Add(this->TasksPerChannelLbl);
+			this->AdvancedSettings->Controls->Add(this->BlockSizeLbl);
+			this->AdvancedSettings->Controls->Add(this->CpuThreadsLbl);
+			this->AdvancedSettings->Controls->Add(this->TaskSizeLbl);
 			this->AdvancedSettings->Controls->Add(this->GroupSizeLbl);
 			this->AdvancedSettings->Controls->Add(this->ConstantFramesEncodingChk);
 			this->AdvancedSettings->Controls->Add(this->ComputeSeekTableChk);
@@ -681,70 +709,70 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			this->AdvancedSettings->Text = L"Advanced Settings";
 			this->AdvancedSettings->UseVisualStyleBackColor = true;
 			// 
-			// label15
+			// WindowFunctionLbl
 			// 
-			this->label15->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(347, 36);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(135, 13);
-			this->label15->TabIndex = 27;
-			this->label15->Text = L"Window function algorithm:";
+			this->WindowFunctionLbl->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->WindowFunctionLbl->AutoSize = true;
+			this->WindowFunctionLbl->Location = System::Drawing::Point(347, 36);
+			this->WindowFunctionLbl->Name = L"WindowFunctionLbl";
+			this->WindowFunctionLbl->Size = System::Drawing::Size(135, 13);
+			this->WindowFunctionLbl->TabIndex = 27;
+			this->WindowFunctionLbl->Text = L"Window function algorithm:";
 			// 
-			// label14
+			// StereoDecorrelationLbl
 			// 
-			this->label14->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(347, 9);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(150, 13);
-			this->label14->TabIndex = 26;
-			this->label14->Text = L"Stereo decorrelation algorithm:";
+			this->StereoDecorrelationLbl->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->StereoDecorrelationLbl->AutoSize = true;
+			this->StereoDecorrelationLbl->Location = System::Drawing::Point(347, 9);
+			this->StereoDecorrelationLbl->Name = L"StereoDecorrelationLbl";
+			this->StereoDecorrelationLbl->Size = System::Drawing::Size(150, 13);
+			this->StereoDecorrelationLbl->TabIndex = 26;
+			this->StereoDecorrelationLbl->Text = L"Stereo decorrelation algorithm:";
 			// 
-			// label13
+			// TasksPerWindowLbl
 			// 
-			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(6, 232);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(99, 13);
-			this->label13->TabIndex = 25;
-			this->label13->Text = L"Tasks per Window:";
+			this->TasksPerWindowLbl->AutoSize = true;
+			this->TasksPerWindowLbl->Location = System::Drawing::Point(6, 232);
+			this->TasksPerWindowLbl->Name = L"TasksPerWindowLbl";
+			this->TasksPerWindowLbl->Size = System::Drawing::Size(99, 13);
+			this->TasksPerWindowLbl->TabIndex = 25;
+			this->TasksPerWindowLbl->Text = L"Tasks per Window:";
 			// 
-			// label12
+			// TasksPerChannelLbl
 			// 
-			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(6, 206);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(100, 13);
-			this->label12->TabIndex = 24;
-			this->label12->Text = L"Tasks Per Channel:";
+			this->TasksPerChannelLbl->AutoSize = true;
+			this->TasksPerChannelLbl->Location = System::Drawing::Point(6, 206);
+			this->TasksPerChannelLbl->Name = L"TasksPerChannelLbl";
+			this->TasksPerChannelLbl->Size = System::Drawing::Size(100, 13);
+			this->TasksPerChannelLbl->TabIndex = 24;
+			this->TasksPerChannelLbl->Text = L"Tasks Per Channel:";
 			// 
-			// label11
+			// BlockSizeLbl
 			// 
-			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(6, 180);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(58, 13);
-			this->label11->TabIndex = 23;
-			this->label11->Text = L"Block size:";
+			this->BlockSizeLbl->AutoSize = true;
+			this->BlockSizeLbl->Location = System::Drawing::Point(6, 180);
+			this->BlockSizeLbl->Name = L"BlockSizeLbl";
+			this->BlockSizeLbl->Size = System::Drawing::Size(58, 13);
+			this->BlockSizeLbl->TabIndex = 23;
+			this->BlockSizeLbl->Text = L"Block size:";
 			// 
-			// label10
+			// CpuThreadsLbl
 			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(6, 154);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(140, 13);
-			this->label10->TabIndex = 22;
-			this->label10->Text = L"Use additional CPU threads:";
+			this->CpuThreadsLbl->AutoSize = true;
+			this->CpuThreadsLbl->Location = System::Drawing::Point(6, 154);
+			this->CpuThreadsLbl->Name = L"CpuThreadsLbl";
+			this->CpuThreadsLbl->Size = System::Drawing::Size(140, 13);
+			this->CpuThreadsLbl->TabIndex = 22;
+			this->CpuThreadsLbl->Text = L"Use additional CPU threads:";
 			// 
-			// label7
+			// TaskSizeLbl
 			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(6, 128);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(198, 13);
-			this->label7->TabIndex = 21;
-			this->label7->Text = L"Set number of frames per multiprocessor:";
+			this->TaskSizeLbl->AutoSize = true;
+			this->TaskSizeLbl->Location = System::Drawing::Point(6, 128);
+			this->TaskSizeLbl->Name = L"TaskSizeLbl";
+			this->TaskSizeLbl->Size = System::Drawing::Size(198, 13);
+			this->TaskSizeLbl->TabIndex = 21;
+			this->TaskSizeLbl->Text = L"Set number of frames per multiprocessor:";
 			// 
 			// GroupSizeLbl
 			// 
@@ -917,14 +945,14 @@ private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CpuThreadsNum))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CompressionLevelSlider))->EndInit();
 			this->tableLayoutPanel1->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown8))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown7))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown6))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PrecisionMaxNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PrecisionMinNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->FixedOrderMaxNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->FixedOrderMinNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PredictionOrderMaxNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PredictionOrderMinNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PartitionOrderMaxNum))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PartitionOrderMinNum))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->BlockSizeNum))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PaddingBytesNum))->EndInit();
 			this->MainTabControl->ResumeLayout(false);
