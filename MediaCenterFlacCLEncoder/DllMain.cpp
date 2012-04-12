@@ -1,11 +1,64 @@
 #include "Stdafx.h"
-#include "JREncoderInterface.h"
+#include "DllMain.h"
+
+#pragma unmanaged
 
 namespace {
 	HINSTANCE DllInstance = nullptr;
+	class EncoderRegistrationRegistrar : public EncoderRegistrationBase
+	{
+	public:
+		static IJREncoder* CreateEncoder(int nIndex)
+		{
+			for (boost::ptr_vector<EncoderRegistrationBase>::const_iterator i = Encoders.begin();
+				i != Encoders.end() && nIndex--; ++i)
+			{
+				return i->Create();
+			}
+
+			return nullptr;
+		}
+
+		static HRESULT Install()
+		{
+			HRESULT returnCode = S_OK;
+			for (boost::ptr_vector<EncoderRegistrationBase>::const_iterator i = Encoders.begin();
+				i != Encoders.end(); ++i)
+			{
+				try
+				{
+					i->Install();
+				}
+				catch (...)
+				{
+					returnCode = SELFREG_E_CLASS;
+				}
+			}
+
+			return returnCode;
+		}
+
+		static HRESULT Uninstall()
+		{
+			HRESULT returnCode = S_OK;
+			for (boost::ptr_vector<EncoderRegistrationBase>::const_iterator i = Encoders.begin();
+				i != Encoders.end(); ++i)
+			{
+				try
+				{
+					i->Uninstall();
+				}
+				catch (...)
+				{
+					returnCode = SELFREG_E_CLASS;
+				}
+			}
+
+			return returnCode;
+		}
+	};
 }
 
-#pragma unmanaged
 namespace MediaCenterFlacCLEncoder {
 #pragma region CreateEncoder
 	/// Export your plugin from a DLL with a single export function CreateEncoder.  You
@@ -14,12 +67,7 @@ namespace MediaCenterFlacCLEncoder {
 	extern "C" __declspec(dllexport)
 	IJREncoder* CreateEncoder(int nIndex, IJREncoderCallback * pCallback)
 	{
-		if (nIndex == 0)
-		{
-			return new MediaCenterFlacCLEncoderInterface();
-		}
-
-		return nullptr;
+		return EncoderRegistrationRegistrar::CreateEncoder(nIndex);
 	}
 #pragma endregion
 
@@ -27,73 +75,13 @@ namespace MediaCenterFlacCLEncoder {
 	extern "C" __declspec(dllexport)
 	HRESULT __cdecl DllRegisterServer(void)
 	{
-		HKEY key;
-		if (RegCreateKeyEx(HKEY_LOCAL_MACHINE,
-			L"SOFTWARE\\J. River\\Media Jukebox\\Plugins\\Encoders\\FlacCL Encoder",
-			0, nullptr, REG_OPTION_NON_VOLATILE, KEY_WRITE | KEY_READ, nullptr,
-			&key, nullptr) != ERROR_SUCCESS)
-		{
-			return SELFREG_E_CLASS;
-		}
-
-		auto RegSetStringValue = [](HKEY key, const wchar_t* valueName, const wchar_t* valueValue)
-		{
-			if (RegSetValueEx(key, valueName, 0, REG_SZ, reinterpret_cast<const BYTE*>(valueValue),
-				sizeof(*valueValue) * (wcslen(valueValue) + 1)) != ERROR_SUCCESS)
-			{
-				throw GetLastError();
-			}
-		};
-		auto RegSetDWordValue = [](HKEY key, const wchar_t* valueName, DWORD valueValue)
-		{
-			if (RegSetValueEx(key, valueName, 0, REG_DWORD, reinterpret_cast<const BYTE*>(&valueValue),
-				sizeof(valueValue)))
-			{
-				throw GetLastError();
-			}
-		};
-
-		HRESULT returnCode = SELFREG_E_CLASS;
-		try
-		{
-			MediaCenterFlacCLEncoderInterface encoder;
-			RegSetStringValue(key, L"Company", L"Joel Low");
-			RegSetStringValue(key, L"Copyright", L"Copyright 2012 Joel Low");
-			RegSetStringValue(key, L"Description", encoder.GetInfo(JR_ENCODER_INFO_DISPLAY_NAME));
-			RegSetStringValue(key, L"Ext", encoder.GetInfo(JR_ENCODER_INFO_EXTENSION));
-			RegSetStringValue(key, L"URL", L"http://joelsplace.sg");
-			RegSetStringValue(key, L"Version", encoder.GetInfo(JR_ENCODER_INFO_VERSION));
-
-			wchar_t modulePath[MAX_PATH];
-			GetModuleFileName(DllInstance, modulePath, MAX_PATH);
-			RegSetStringValue(key, L"Path", modulePath);
-			RegSetDWordValue(key, L"IVersion", JR_ENCODER_CURRENT_VERSION);
-			returnCode = S_OK;
-		}
-		catch (DWORD error)
-		{
-		}
-
-		RegCloseKey(key);
-		return returnCode;
+		return EncoderRegistrationRegistrar::Install();
 	}
 
 	extern "C" __declspec(dllexport)
 	HRESULT __cdecl DllUnregisterServer(void)
 	{
-		if (RegDeleteKeyEx(HKEY_LOCAL_MACHINE,
-			L"SOFTWARE\\J. River\\Media Jukebox\\Plugins\\Encoders\\FlacCL Encoder",
-#ifdef _WIN64
-			KEY_WOW64_64KEY,
-#else
-			KEY_WOW64_32KEY,
-#endif
-			0) != ERROR_SUCCESS)
-		{
-			return SELFREG_E_CLASS;
-		}
-
-		return S_OK;
+		return EncoderRegistrationRegistrar::Uninstall();
 	}
 #pragma endregion
 }

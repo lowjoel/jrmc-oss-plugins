@@ -40,6 +40,16 @@ namespace MediaCenterFlacCLEncoder {
 		virtual BSTR GetInfo(LPCTSTR pName);
 		virtual BOOL SetInfo(LPCTSTR pName, LPCTSTR pValue);
 
+	public:
+		/// Called at plugin load.
+		static void Initialise();
+
+		/// Called when MC is installing us.
+		static void Install();
+
+		/// Called when MC is uninstalling us.
+		static void Uninstall();
+
 	private:
 		/// The handle to the encoder instance.
 		gcroot<ref class MediaCenterFlacCLEncoder^> Encoder;
