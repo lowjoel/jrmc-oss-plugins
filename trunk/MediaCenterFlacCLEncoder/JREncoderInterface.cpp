@@ -61,4 +61,20 @@ namespace MediaCenterFlacCLEncoder {
 		return nullptr;
 	}
 #pragma endregion
+
+#pragma region Install/uninstall
+	extern "C" __declspec(dllexport)
+	HRESULT __stdcall DllRegisterServer(void)
+	{
+		return SELFREG_E_CLASS;
+	}
+
+	extern "C" __declspec(dllexport)
+	HRESULT __stdcall DllUnregisterServer(void)
+	{
+		return S_FALSE;
+	}
+
+
+#pragma endregion
 }
