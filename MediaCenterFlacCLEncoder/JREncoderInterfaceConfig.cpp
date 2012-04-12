@@ -21,10 +21,10 @@ namespace MediaCenterFlacCLEncoder {
 		StereoDecorrelationAlgorithm = -1;
 		WindowAlgorithm = -1;
 
-		PartitionOrder = std::make_pair(-1, -1);
-		PredictionOrder = std::make_pair(-1, -1);
-		FixedOrder = std::make_pair(-1, -1);
-		Precision = std::make_pair(-1, -1);
+		PartitionOrder = std::make_pair(0, 0);
+		PredictionOrder = std::make_pair(0, 0);
+		FixedOrder = std::make_pair(0, 0);
+		Precision = std::make_pair(0, 0);
 
 		UseCpuEmulation = false;
 	}
