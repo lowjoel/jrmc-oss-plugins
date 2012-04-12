@@ -15,8 +15,8 @@ namespace MediaCenterFlacCLEncoder {
 	MediaCenterFlacCLEncoder::MediaCenterFlacCLEncoder(String^ outPath, AudioPCMConfig^ format)
 	{
 		Writer = gcnew FLACCLWriter(outPath,
-				gcnew FileStream(outPath, FileMode::Create, FileAccess::Write),
-				format);
+			gcnew FileStream(outPath, FileMode::Create, FileAccess::Write),
+			format);
 	}
 
 	Assembly^ MediaCenterFlacCLEncoder::LoadDependencies(Object^ sender, ResolveEventArgs^ args)
@@ -32,6 +32,10 @@ namespace MediaCenterFlacCLEncoder {
 
 	void MediaCenterFlacCLEncoder::Write(array<Byte>^ data)
 	{
+		AudioPCMConfig^ format = Writer->PCM;
+		CUETools::Codecs::AudioBuffer buffer(format, data, data->Length / format->BlockAlign);
+
+		Writer->Write(%buffer);
 	}
 
 	void MediaCenterFlacCLEncoder::Finish()
