@@ -942,6 +942,7 @@ private: System::Windows::Forms::Label^  StereoDecorrelationLbl;
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"SettingsForm";
+			this->ShowInTaskbar = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"FlacCL Encoder Settings";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->GroupSizeNum))->EndInit();
