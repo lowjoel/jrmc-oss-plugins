@@ -18,9 +18,6 @@ namespace MediaCenterFlacCLEncoder {
 		SettingsForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
@@ -106,14 +103,14 @@ namespace MediaCenterFlacCLEncoder {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown2 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown3 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown4 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown5 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown6 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown7 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->numericUpDown8 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown7 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown6 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown5 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown4 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown3 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown2 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->BlockSizeNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->PaddingBytesNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->MainTabControl = (gcnew System::Windows::Forms::TabControl());
@@ -126,14 +123,14 @@ namespace MediaCenterFlacCLEncoder {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CpuThreadsNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CompressionLevelSlider))->BeginInit();
 			this->tableLayoutPanel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown4))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown6))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown7))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown8))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->BlockSizeNum))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PaddingBytesNum))->BeginInit();
 			this->MainTabControl->SuspendLayout();
@@ -239,6 +236,7 @@ namespace MediaCenterFlacCLEncoder {
 			// 
 			// CompressionLevelSlider
 			// 
+			this->CompressionLevelSlider->BackColor = System::Drawing::SystemColors::Window;
 			this->CompressionLevelSlider->Location = System::Drawing::Point(6, 107);
 			this->CompressionLevelSlider->Maximum = 11;
 			this->CompressionLevelSlider->Minimum = 1;
@@ -353,27 +351,33 @@ namespace MediaCenterFlacCLEncoder {
 			this->label6->TabIndex = 5;
 			this->label6->Text = L"label6";
 			// 
-			// numericUpDown1
+			// numericUpDown8
 			// 
-			this->numericUpDown1->Location = System::Drawing::Point(95, 25);
-			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown1->TabIndex = 6;
+			this->numericUpDown8->Location = System::Drawing::Point(238, 103);
+			this->numericUpDown8->Name = L"numericUpDown8";
+			this->numericUpDown8->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown8->TabIndex = 13;
 			// 
-			// numericUpDown2
+			// numericUpDown7
 			// 
-			this->numericUpDown2->Location = System::Drawing::Point(238, 25);
-			this->numericUpDown2->Name = L"numericUpDown2";
-			this->numericUpDown2->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown2->TabIndex = 7;
+			this->numericUpDown7->Location = System::Drawing::Point(95, 103);
+			this->numericUpDown7->Name = L"numericUpDown7";
+			this->numericUpDown7->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown7->TabIndex = 12;
 			// 
-			// numericUpDown3
+			// numericUpDown6
 			// 
-			this->numericUpDown3->Location = System::Drawing::Point(95, 51);
-			this->numericUpDown3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
-			this->numericUpDown3->Name = L"numericUpDown3";
-			this->numericUpDown3->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown3->TabIndex = 8;
+			this->numericUpDown6->Location = System::Drawing::Point(238, 77);
+			this->numericUpDown6->Name = L"numericUpDown6";
+			this->numericUpDown6->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown6->TabIndex = 11;
+			// 
+			// numericUpDown5
+			// 
+			this->numericUpDown5->Location = System::Drawing::Point(95, 77);
+			this->numericUpDown5->Name = L"numericUpDown5";
+			this->numericUpDown5->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown5->TabIndex = 10;
 			// 
 			// numericUpDown4
 			// 
@@ -383,33 +387,27 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown4->Size = System::Drawing::Size(120, 20);
 			this->numericUpDown4->TabIndex = 9;
 			// 
-			// numericUpDown5
+			// numericUpDown3
 			// 
-			this->numericUpDown5->Location = System::Drawing::Point(95, 77);
-			this->numericUpDown5->Name = L"numericUpDown5";
-			this->numericUpDown5->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown5->TabIndex = 10;
+			this->numericUpDown3->Location = System::Drawing::Point(95, 51);
+			this->numericUpDown3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
+			this->numericUpDown3->Name = L"numericUpDown3";
+			this->numericUpDown3->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown3->TabIndex = 8;
 			// 
-			// numericUpDown6
+			// numericUpDown2
 			// 
-			this->numericUpDown6->Location = System::Drawing::Point(238, 77);
-			this->numericUpDown6->Name = L"numericUpDown6";
-			this->numericUpDown6->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown6->TabIndex = 11;
+			this->numericUpDown2->Location = System::Drawing::Point(238, 25);
+			this->numericUpDown2->Name = L"numericUpDown2";
+			this->numericUpDown2->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown2->TabIndex = 7;
 			// 
-			// numericUpDown7
+			// numericUpDown1
 			// 
-			this->numericUpDown7->Location = System::Drawing::Point(95, 103);
-			this->numericUpDown7->Name = L"numericUpDown7";
-			this->numericUpDown7->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown7->TabIndex = 12;
-			// 
-			// numericUpDown8
-			// 
-			this->numericUpDown8->Location = System::Drawing::Point(238, 103);
-			this->numericUpDown8->Name = L"numericUpDown8";
-			this->numericUpDown8->Size = System::Drawing::Size(120, 20);
-			this->numericUpDown8->TabIndex = 13;
+			this->numericUpDown1->Location = System::Drawing::Point(95, 25);
+			this->numericUpDown1->Name = L"numericUpDown1";
+			this->numericUpDown1->Size = System::Drawing::Size(120, 20);
+			this->numericUpDown1->TabIndex = 6;
 			// 
 			// BlockSizeNum
 			// 
@@ -470,22 +468,26 @@ namespace MediaCenterFlacCLEncoder {
 			this->AdvancedSettings->Location = System::Drawing::Point(4, 22);
 			this->AdvancedSettings->Name = L"AdvancedSettings";
 			this->AdvancedSettings->Padding = System::Windows::Forms::Padding(3);
-			this->AdvancedSettings->Size = System::Drawing::Size(604, 352);
+			this->AdvancedSettings->Size = System::Drawing::Size(604, 323);
 			this->AdvancedSettings->TabIndex = 1;
 			this->AdvancedSettings->Text = L"Advanced Settings";
 			this->AdvancedSettings->UseVisualStyleBackColor = true;
 			// 
 			// OkBtn
 			// 
+			this->OkBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			this->OkBtn->Location = System::Drawing::Point(464, 367);
 			this->OkBtn->Name = L"OkBtn";
 			this->OkBtn->Size = System::Drawing::Size(75, 23);
 			this->OkBtn->TabIndex = 2;
 			this->OkBtn->Text = L"OK";
 			this->OkBtn->UseVisualStyleBackColor = true;
+			this->OkBtn->Click += gcnew System::EventHandler(this, &SettingsForm::OkBtn_Click);
 			// 
 			// CancelBtn
 			// 
+			this->CancelBtn->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->CancelBtn->DialogResult = System::Windows::Forms::DialogResult::Cancel;
 			this->CancelBtn->Location = System::Drawing::Point(545, 367);
 			this->CancelBtn->Name = L"CancelBtn";
 			this->CancelBtn->Size = System::Drawing::Size(75, 23);
@@ -514,14 +516,14 @@ namespace MediaCenterFlacCLEncoder {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->CompressionLevelSlider))->EndInit();
 			this->tableLayoutPanel1->ResumeLayout(false);
 			this->tableLayoutPanel1->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown4))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown6))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown7))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown8))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->numericUpDown1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->BlockSizeNum))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->PaddingBytesNum))->EndInit();
 			this->MainTabControl->ResumeLayout(false);
@@ -533,5 +535,7 @@ namespace MediaCenterFlacCLEncoder {
 
 		}
 #pragma endregion
-	};
+	private: System::Void OkBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+			 }
+};
 }
