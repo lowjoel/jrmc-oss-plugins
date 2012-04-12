@@ -80,6 +80,9 @@
       <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.FLACCL.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="OpenCLNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\Applications\CueTools\bin\Release\OpenCLNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

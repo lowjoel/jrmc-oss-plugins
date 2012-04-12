@@ -117,16 +117,32 @@ namespace MediaCenterFlacCLEncoder {
 			return TRUE;
 		}
 
-		array<Byte>^ buffer = gcnew array<Byte>(nBufferBytes);
-		pin_ptr<byte> bufferPtr = &buffer[0];
-		memcpy(bufferPtr, pBuffer, nBufferBytes);
+		try
+		{
+			array<Byte>^ buffer = gcnew array<Byte>(nBufferBytes);
+			pin_ptr<byte> bufferPtr = &buffer[0];
+			memcpy(bufferPtr, pBuffer, nBufferBytes);
 
-		Encoder->Write(buffer);
-		return TRUE;
+			Encoder->Write(buffer);
+			return TRUE;
+		}
+		catch (OpenCLNet::OpenCLBuildException^ e)
+		{
+			LastError = e;
+		}
+		catch (Exception^ e)
+		{
+			LastError = e;
+		}
+
+		Encoder->Terminate();
+		return FALSE;
 	}
 
 	BOOL MediaCenterFlacCLEncoderInterface::FinishBufferBased()
 	{
+		System::Diagnostics::Debug::Assert(!LastError);
+
 		Encoder->Finish();
 		return TRUE;
 	}
