@@ -801,6 +801,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"SettingsForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"FlacCL Encoder Settings";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->GroupSizeNum))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->TaskSizeNum))->EndInit();
