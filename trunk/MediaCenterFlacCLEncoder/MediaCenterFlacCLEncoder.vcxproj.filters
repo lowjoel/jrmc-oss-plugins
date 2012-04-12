@@ -27,6 +27,9 @@
     <ClInclude Include="JREncoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JREncoderInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MediaCenterFlacCLEncoder.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JREncoderInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
