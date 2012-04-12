@@ -34,10 +34,10 @@ namespace MediaCenterFlacCLEncoder {
 			result.OffloadTasksToCpu = OffloadGpuToCpuChk->Checked;
 			result.DoRiceEncoding = RiceEncodingChk->Checked;
 
-			result.MappedMemory = MappedMemoryChk->Checked;
-			result.EstimateWindow = EstimateWindowChk->Checked;
-			result.ComputeSeekTable = ComputeSeekTableChk->Checked;
-			result.ConstantFramesEncoding = ConstantFramesEncodingChk->Checked;
+			result.MappedMemory = TriboolFromCheckState(MappedMemoryChk->CheckState);
+			result.EstimateWindow = TriboolFromCheckState(EstimateWindowChk->CheckState);
+			result.ComputeSeekTable = TriboolFromCheckState(ComputeSeekTableChk->CheckState);
+			result.ConstantFramesEncoding = TriboolFromCheckState(ConstantFramesEncodingChk->CheckState);
 			result.GpuWorkGroupSize = (System::Int32)GroupSizeNum->Value;
 			result.FramesPerMultiprocessor = (System::Int32)TaskSizeNum->Value;
 			result.AdditionalCpuThreads = (System::Int32)CpuThreadsNum->Value;
@@ -68,10 +68,10 @@ namespace MediaCenterFlacCLEncoder {
 			OffloadGpuToCpuChk->Checked = config.OffloadTasksToCpu;
 			RiceEncodingChk->Checked = config.DoRiceEncoding;
 
-			MappedMemoryChk->Checked = config.MappedMemory;
-			EstimateWindowChk->Checked = config.EstimateWindow;
-			ComputeSeekTableChk->Checked = config.ComputeSeekTable;
-			ConstantFramesEncodingChk->Checked = config.ConstantFramesEncoding;
+			MappedMemoryChk->CheckState = CheckStateFromTribool(config.MappedMemory);
+			EstimateWindowChk->CheckState = CheckStateFromTribool(config.EstimateWindow);
+			ComputeSeekTableChk->CheckState = CheckStateFromTribool(config.ComputeSeekTable);
+			ConstantFramesEncodingChk->CheckState = CheckStateFromTribool(config.ConstantFramesEncoding);
 			GroupSizeNum->Value = config.GpuWorkGroupSize;
 			TaskSizeNum->Value= config.FramesPerMultiprocessor;
 			CpuThreadsNum->Value = config.AdditionalCpuThreads;
@@ -89,6 +89,19 @@ namespace MediaCenterFlacCLEncoder {
 			config.OpenCLDefines;
 			config.OpenCLPlatform;
 			config.UseCpuEmulation;
+		}
+
+	private:
+		boost::tribool TriboolFromCheckState(CheckState value)
+		{
+			return value == CheckState::Indeterminate ? boost::tribool(boost::indeterminate) :
+				value == CheckState::Checked;
+		}
+
+		CheckState CheckStateFromTribool(boost::tribool value)
+		{
+			return boost::indeterminate(value) ? CheckState::Indeterminate :
+				(value ? CheckState::Checked : CheckState::Unchecked);
 		}
 
 	protected:
