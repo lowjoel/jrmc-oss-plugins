@@ -41,10 +41,6 @@ namespace MediaCenterFlacCLEncoder {
 		virtual BOOL SetInfo(LPCTSTR pName, LPCTSTR pValue);
 
 	public:
-		//Some private overloads.
-		BOOL SetInfo(const std::wstring& pName, const std::wstring& pValue);
-
-	public:
 		/// Called at plugin load.
 		static void Initialise();
 
@@ -53,6 +49,11 @@ namespace MediaCenterFlacCLEncoder {
 
 		/// Called when MC is uninstalling us.
 		static void Uninstall();
+
+	private:
+		//Some private overloads.
+		BOOL SetInfo(const std::wstring& pName, const std::wstring& pValue);
+		BOOL SetInfo(const std::wstring& pName, System::String^ pValue);
 
 	private:
 		/// The handle to the encoder instance.
