@@ -65,9 +65,7 @@ namespace MediaCenterFlacCLEncoder {
 			RegSetStringValue(key, L"URL", L"http://joelsplace.sg");
 			RegSetStringValue(key, L"Version", encoder.GetInfo(JR_ENCODER_INFO_VERSION));
 
-			wchar_t modulePath[MAX_PATH];
-			GetModuleFileName(DllInstance, modulePath, MAX_PATH);
-			RegSetStringValue(key, L"Path", modulePath);
+			RegSetStringValue(key, L"Path", EncoderRegistrationBase::GetDllPath().c_str());
 			RegSetDWordValue(key, L"IVersion", JR_ENCODER_CURRENT_VERSION);
 			returnCode = S_OK;
 		}

@@ -95,3 +95,12 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 
 	return TRUE;
 }
+
+std::wstring EncoderRegistrationBase::GetDllPath()
+{
+	wchar_t modulePath[MAX_PATH];
+	GetModuleFileName(DllInstance, modulePath, MAX_PATH);
+	return modulePath;
+}
+
+boost::ptr_vector<EncoderRegistrationBase> EncoderRegistrationBase::Encoders;

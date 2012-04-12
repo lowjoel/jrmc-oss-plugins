@@ -17,6 +17,9 @@ public:
 	/// Creates an encoder instance. Called by Media Center.
 	virtual IJREncoder* Create() const = 0;
 
+	/// Gets the path to the currently executing DLL.
+	static std::wstring GetDllPath();
+
 protected:
 	static boost::ptr_vector<EncoderRegistrationBase> Encoders;
 };
@@ -28,7 +31,7 @@ class EncoderRegistration : protected EncoderRegistrationBase
 public:
 	EncoderRegistration()
 	{
-		Encoders.push_back(this);
+		Encoders.push_back(new EncoderRegistration<EncoderPluginClass>(*this));
 		Initialise();
 	}
 
