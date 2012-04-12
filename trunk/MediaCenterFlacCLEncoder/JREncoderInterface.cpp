@@ -135,16 +135,18 @@ namespace MediaCenterFlacCLEncoder {
 			LastError = e;
 		}
 
+		msclr::interop::marshal_context marshal;
+		std::wstring message(marshal.marshal_as<std::wstring>(LastError->Message));
+		SetInfo(JR_ENCODER_INFO_LAST_ERROR, message);
 		Encoder->Terminate();
 		return FALSE;
 	}
 
 	BOOL MediaCenterFlacCLEncoderInterface::FinishBufferBased()
 	{
-		System::Diagnostics::Debug::Assert(!LastError);
-
-		Encoder->Finish();
-		return TRUE;
+		if (!LastError)
+			Encoder->Finish();
+		return LastError ? FALSE : TRUE;
 	}
 #pragma endregion
 
@@ -174,6 +176,13 @@ namespace MediaCenterFlacCLEncoder {
 	}
 
 	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(LPCTSTR pName, LPCTSTR pValue)
+	{
+		Settings[pName] = pValue;
+		return TRUE;
+	}
+
+	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(const std::wstring& pName,
+		const std::wstring& pValue)
 	{
 		Settings[pName] = pValue;
 		return TRUE;

@@ -41,6 +41,10 @@ namespace MediaCenterFlacCLEncoder {
 		virtual BOOL SetInfo(LPCTSTR pName, LPCTSTR pValue);
 
 	public:
+		//Some private overloads.
+		BOOL SetInfo(const std::wstring& pName, const std::wstring& pValue);
+
+	public:
 		/// Called at plugin load.
 		static void Initialise();
 
