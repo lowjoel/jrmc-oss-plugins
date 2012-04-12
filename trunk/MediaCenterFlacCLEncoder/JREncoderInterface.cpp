@@ -68,7 +68,7 @@ namespace MediaCenterFlacCLEncoder {
 	{
 		HKEY key = { 0 };
 		if (RegCreateKeyEx(HKEY_LOCAL_MACHINE,
-			L"SOFTWARE\J. River\Media Jukebox\Plugins\Encoders\FlacCL Encoder",
+			L"SOFTWARE\\J. River\\Media Jukebox\\Plugins\\Encoders\\FlacCL Encoder",
 			0, nullptr, REG_OPTION_NON_VOLATILE, KEY_WRITE | KEY_READ, nullptr,
 			&key, nullptr) != ERROR_SUCCESS)
 		{
@@ -108,7 +108,7 @@ namespace MediaCenterFlacCLEncoder {
 	{
 		HKEY key = { 0 };
 		if (RegDeleteKeyEx(HKEY_LOCAL_MACHINE,
-			L"SOFTWARE\J. River\Media Jukebox\Plugins\Encoders\FlacCL Encoder",
+			L"SOFTWARE\\J. River\\Media Jukebox\\Plugins\\Encoders\\FlacCL Encoder",
 #ifdef _WIN64
 			KEY_WOW64_64KEY,
 #else
