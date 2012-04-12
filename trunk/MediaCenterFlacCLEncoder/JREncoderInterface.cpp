@@ -5,6 +5,7 @@
 #include "DllMain.h"
 
 using namespace System;
+using namespace CUETools::Codecs;
 
 namespace MediaCenterFlacCLEncoder {
 	MediaCenterFlacCLEncoderInterface::MediaCenterFlacCLEncoderInterface()
@@ -95,13 +96,18 @@ namespace MediaCenterFlacCLEncoder {
 	}
 
 #pragma region Buffer-based encoding (must support encoding happening from a worker thread)
-	BOOL MediaCenterFlacCLEncoderInterface::StartBufferBased(WAVEFORMATEX* pwfeFormat, __int64 nApproximateTotalBytes)
+	BOOL MediaCenterFlacCLEncoderInterface::StartBufferBased(WAVEFORMATEX* pwfeFormat,
+		__int64 nApproximateTotalBytes)
 	{
-		Encoder = gcnew MediaCenterFlacCLEncoder(gcnew String(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME)));
+		AudioPCMConfig^ format = gcnew AudioPCMConfig(pwfeFormat->wBitsPerSample, pwfeFormat->nChannels,
+			pwfeFormat->nSamplesPerSec);
+		Encoder = gcnew MediaCenterFlacCLEncoder(
+			gcnew String(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME)), format);
 		return TRUE;
 	}
 
-	BOOL MediaCenterFlacCLEncoderInterface::EncodeBufferBased(BYTE* pBuffer, int nBufferBytes)
+	BOOL MediaCenterFlacCLEncoderInterface::EncodeBufferBased(BYTE* pBuffer,
+		int nBufferBytes)
 	{
 		return FALSE;
 	}

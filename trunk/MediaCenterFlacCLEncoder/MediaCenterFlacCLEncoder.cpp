@@ -7,16 +7,16 @@
 using namespace System;
 using namespace System::IO;
 using namespace System::Reflection;
+
+using namespace CUETools::Codecs;
 using namespace CUETools::Codecs::FLACCL;
 
 namespace MediaCenterFlacCLEncoder {
-	MediaCenterFlacCLEncoder::MediaCenterFlacCLEncoder(String^ outPath)
+	MediaCenterFlacCLEncoder::MediaCenterFlacCLEncoder(String^ outPath, AudioPCMConfig^ format)
 	{
-		Writer = nullptr;/*gcnew FLACCLWriter((output_file == "-" || output_file == "nul") ? "" : output_file,
-				output_file == "-" ? Console.OpenStandardOutput() :
-				output_file == "nul" ? new NullStream() : null,
-				audioSource.PCM);
-			encoder.FinalSampleCount = audioSource.Length;*/
+		Writer = gcnew FLACCLWriter(outPath,
+				gcnew FileStream(outPath, FileMode::Create, FileAccess::Write),
+				format);
 		Writer->FinalSampleCount = 0;
 	}
 
