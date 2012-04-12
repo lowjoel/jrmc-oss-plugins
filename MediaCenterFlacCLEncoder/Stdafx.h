@@ -12,5 +12,6 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/logic/tribool.hpp>
 
 #include "JREncoder.h"

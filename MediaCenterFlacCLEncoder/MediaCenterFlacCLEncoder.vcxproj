@@ -102,6 +102,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="DllMain.cpp" />
     <ClCompile Include="JREncoderInterface.cpp" />
+    <ClCompile Include="JREncoderInterfaceConfig.cpp" />
     <ClCompile Include="MediaCenterFlacCLEncoder.cpp" />
     <ClCompile Include="SettingsForm.cpp" />
     <ClCompile Include="Stdafx.cpp">
