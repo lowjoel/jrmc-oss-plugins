@@ -1,8 +1,9 @@
 #include "Stdafx.h"
-#pragma unmanaged
 
 #include "JREncoderInterface.h"
+#include "MediaCenterFlacCLEncoder.h"
 
+#pragma unmanaged
 namespace MediaCenterFlacCLEncoder {
 	MediaCenterFlacCLEncoderInterface::~MediaCenterFlacCLEncoderInterface()
 	{
