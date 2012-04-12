@@ -54,7 +54,7 @@ namespace MediaCenterFlacCLEncoder {
 
 			result.OpenCLDefines;
 			result.OpenCLPlatform;
-			result.UseCpuEmulation;
+			result.UseCpuEmulation = CpuEmulationChk->Checked;
 
 			return result;
 		}
@@ -92,7 +92,7 @@ namespace MediaCenterFlacCLEncoder {
 
 			config.OpenCLDefines;
 			config.OpenCLPlatform;
-			config.UseCpuEmulation;
+			CpuEmulationChk->Checked = config.UseCpuEmulation;
 		}
 
 	private:
