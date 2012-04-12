@@ -30,6 +30,9 @@
     <ClInclude Include="JREncoderInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DllMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MediaCenterFlacCLEncoder.cpp">
