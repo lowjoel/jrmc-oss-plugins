@@ -187,7 +187,7 @@ namespace MediaCenterFlacCLEncoder {
 		if (i == Settings.end())
 			return nullptr;
 
-		return SysAllocString(i->second.c_str());
+		return SysAllocStringLen(i->second.c_str(), i->second.length());
 	}
 
 	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(LPCTSTR pName, LPCTSTR pValue)
