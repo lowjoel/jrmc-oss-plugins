@@ -24,6 +24,8 @@ namespace MediaCenterFlacCLEncoder {
 
 	void MediaCenterFlacCLEncoderInterface::Initialise()
 	{
+		AppDomain^ currentDomain = AppDomain::CurrentDomain;
+		currentDomain->AssemblyResolve += gcnew ResolveEventHandler(MediaCenterFlacCLEncoder::LoadDependencies);
 	}
 
 	void MediaCenterFlacCLEncoderInterface::Install()

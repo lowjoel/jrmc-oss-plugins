@@ -1,13 +1,15 @@
-// MediaCenterFlacCLEncoder.h
-
 #pragma once
 
-using namespace System;
-
 namespace MediaCenterFlacCLEncoder {
-
-	public ref class Class1
+	public ref class MediaCenterFlacCLEncoder
 	{
-		// TODO: Add your methods for this class here.
+	public:
+		MediaCenterFlacCLEncoder(System::String^ outPath);
+
+		static System::Reflection::Assembly^ LoadDependencies(System::Object^ sender,
+			System::ResolveEventArgs^ args);
+
+	private:
+		CUETools::Codecs::FLACCL::FLACCLWriter^ Writer;
 	};
 }
