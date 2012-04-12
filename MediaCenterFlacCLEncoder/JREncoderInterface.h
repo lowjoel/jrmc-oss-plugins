@@ -20,6 +20,8 @@ namespace MediaCenterFlacCLEncoder {
 		/// Stores configuration options for the FlacCL Encoder.
 		struct Config
 		{
+			friend class boost::serialization::access;
+
 		public:
 			/// Default constructor.
 			Config();
@@ -29,6 +31,9 @@ namespace MediaCenterFlacCLEncoder {
 
 			/// Serialises the configuration.
 			operator std::wstring() const;
+
+		private:
+			template<typename Archive> void serialize(Archive& ar, const unsigned int version);
 
 		public:
 			int CompressionLevel;

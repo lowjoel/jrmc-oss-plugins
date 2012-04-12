@@ -13,5 +13,8 @@
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/logic/tribool.hpp>
+#include <boost/archive/text_wiarchive.hpp>
+#include <boost/archive/text_woarchive.hpp>
+#include <boost/serialization/serialization.hpp>
 
 #include "JREncoder.h"
