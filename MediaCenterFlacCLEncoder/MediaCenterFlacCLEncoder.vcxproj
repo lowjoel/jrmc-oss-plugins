@@ -97,6 +97,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />

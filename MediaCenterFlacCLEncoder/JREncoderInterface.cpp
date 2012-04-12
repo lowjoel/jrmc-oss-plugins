@@ -4,6 +4,7 @@
 #include "MediaCenterFlacCLEncoder.h"
 #include "DllMain.h"
 #include "SettingsForm.h"
+#include "Util.h"
 
 using namespace System;
 using namespace CUETools::Codecs;
@@ -65,10 +66,10 @@ namespace MediaCenterFlacCLEncoder {
 			MediaCenterFlacCLEncoderInterface encoder;
 			RegSetStringValue(key, L"Company", L"Joel Low");
 			RegSetStringValue(key, L"Copyright", L"Copyright 2012 Joel Low");
-			RegSetStringValue(key, L"Description", encoder.GetInfo(JR_ENCODER_INFO_DISPLAY_NAME));
-			RegSetStringValue(key, L"Ext", encoder.GetInfo(JR_ENCODER_INFO_EXTENSION));
+			RegSetStringValue(key, L"Description", BStr(encoder.GetInfo(JR_ENCODER_INFO_DISPLAY_NAME)));
+			RegSetStringValue(key, L"Ext", BStr(encoder.GetInfo(JR_ENCODER_INFO_EXTENSION)));
 			RegSetStringValue(key, L"URL", L"http://joelsplace.sg");
-			RegSetStringValue(key, L"Version", encoder.GetInfo(JR_ENCODER_INFO_VERSION));
+			RegSetStringValue(key, L"Version", BStr(encoder.GetInfo(JR_ENCODER_INFO_VERSION)));
 
 			RegSetStringValue(key, L"Path", EncoderRegistrationBase::GetDllPath().c_str());
 			RegSetDWordValue(key, L"IVersion", JR_ENCODER_CURRENT_VERSION);
@@ -105,8 +106,8 @@ namespace MediaCenterFlacCLEncoder {
 
 		AudioPCMConfig^ format = gcnew AudioPCMConfig(pwfeFormat->wBitsPerSample, pwfeFormat->nChannels,
 			pwfeFormat->nSamplesPerSec);
-		String^ filePath = gcnew String(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME));
-		filePath += L'.' + gcnew String(GetInfo(JR_ENCODER_INFO_EXTENSION));
+		String^ filePath = gcnew String(BStr(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME)));
+		filePath += L'.' + gcnew String(BStr(GetInfo(JR_ENCODER_INFO_EXTENSION)));
 		Encoder = gcnew MediaCenterFlacCLEncoder(filePath, format);
 		SetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME, filePath);
 		return TRUE;
@@ -156,10 +157,10 @@ namespace MediaCenterFlacCLEncoder {
 	BOOL MediaCenterFlacCLEncoderInterface::Options()
 	{
 		SettingsForm form;
-		BSTR config = GetInfo(JR_ENCODER_INFO_SETTINGS);
+		BStr config = GetInfo(JR_ENCODER_INFO_SETTINGS);
 		if (config && SysStringLen(config))
 		{
-			form.SetConfig(std::wstring(config, SysStringLen(config)));
+			form.SetConfig(Config(config));
 		}
 
 		if (form.ShowDialog() == DialogResult::OK)
