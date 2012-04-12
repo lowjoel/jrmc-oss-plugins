@@ -56,7 +56,11 @@ namespace MediaCenterFlacCLEncoder {
 #pragma region Settings, etc.
 	BSTR MediaCenterFlacCLEncoderInterface::GetInfo(LPCTSTR pName)
 	{
-		return nullptr;
+		SettingsMap::const_iterator i = Settings.find(pName);
+		if (i == Settings.end())
+			return nullptr;
+
+		return SysAllocString(i->second.c_str());
 	}
 
 	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(LPCTSTR pName, LPCTSTR pValue)

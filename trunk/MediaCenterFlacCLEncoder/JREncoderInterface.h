@@ -14,6 +14,7 @@ namespace MediaCenterFlacCLEncoder {
 				return wcscmp(lhs.c_str(), rhs.c_str()) < 0;
 			}
 		};
+		typedef std::map<std::wstring, std::wstring, wstring_comparer> SettingsMap;
 
 	public:
 		MediaCenterFlacCLEncoderInterface();
@@ -44,6 +45,6 @@ namespace MediaCenterFlacCLEncoder {
 		gcroot<ref class MediaCenterFlacCLEncoder^> Encoder;
 
 		/// Settings set by JRMC
-		std::map<std::wstring, std::wstring, wstring_comparer> Settings;
+		SettingsMap Settings;
 	};
 }
