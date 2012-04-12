@@ -28,22 +28,22 @@ namespace MediaCenterFlacCLEncoder {
 			MediaCenterFlacCLEncoderInterface::Config result;
 			
 			result.CompressionLevel = CompressionLevelSlider->Value;
-			result.PaddingBytes;
-			result.VerifyEncoding;
-			result.ComputeMd5Hash;
-			result.OffloadTasksToCpu;
-			result.DoRiceEncoding;
+			result.PaddingBytes = (System::Int32)PaddingBytesNum->Value;
+			result.VerifyEncoding = VerifyEncodingChk->Checked;
+			result.ComputeMd5Hash = ComputeMd5HashChk->Checked;
+			result.OffloadTasksToCpu = OffloadGpuToCpuChk->Checked;
+			result.DoRiceEncoding = RiceEncodingChk->Checked;
 
-			result.MappedMemory;
-			result.EstimateWindow;
-			result.ComputeSeekTable;
-			result.ConstantFrames;
-			result.GpuWorkGroupSize;
-			result.FramesPerMultiprocessor;
-			result.AdditionalCpuThreads;
-			result.BlockSize;
-			result.TasksPerChannel;
-			result.TasksPerWindow;
+			result.MappedMemory = MappedMemoryChk->Checked;
+			result.EstimateWindow = EstimateWindowChk->Checked;
+			result.ComputeSeekTable = ComputeSeekTableChk->Checked;
+			result.ConstantFramesEncoding = ConstantFramesEncodingChk->Checked;
+			result.GpuWorkGroupSize = (System::Int32)GroupSizeNum->Value;
+			result.FramesPerMultiprocessor = (System::Int32)TaskSizeNum->Value;
+			result.AdditionalCpuThreads = (System::Int32)CpuThreadsNum->Value;
+			result.BlockSize = (System::Int32)BlockSizeNum->Value;
+			result.TasksPerChannel = (System::Int32)TasksPerChannelNum->Value;
+			result.TasksPerWindow = (System::Int32)TasksPerWindowNum->Value;
 			result.StereoDecorrelationAlgorithm;
 			result.WindowAlgorithm;
 
@@ -61,23 +61,23 @@ namespace MediaCenterFlacCLEncoder {
 
 		void SetConfig(const MediaCenterFlacCLEncoderInterface::Config& config)
 		{
-			config.CompressionLevel;
-			config.PaddingBytes;
-			config.VerifyEncoding;
-			config.ComputeMd5Hash;
-			config.OffloadTasksToCpu;
-			config.DoRiceEncoding;
+			CompressionLevelSlider->Value = config.CompressionLevel;
+			PaddingBytesNum->Value = config.PaddingBytes;
+			VerifyEncodingChk->Checked = config.VerifyEncoding;
+			ComputeMd5HashChk->Checked = config.ComputeMd5Hash;
+			OffloadGpuToCpuChk->Checked = config.OffloadTasksToCpu;
+			RiceEncodingChk->Checked = config.DoRiceEncoding;
 
-			config.MappedMemory;
-			config.EstimateWindow;
-			config.ComputeSeekTable;
-			config.ConstantFrames;
-			config.GpuWorkGroupSize;
-			config.FramesPerMultiprocessor;
-			config.AdditionalCpuThreads;
-			config.BlockSize;
-			config.TasksPerChannel;
-			config.TasksPerWindow;
+			MappedMemoryChk->Checked = config.MappedMemory;
+			EstimateWindowChk->Checked = config.EstimateWindow;
+			ComputeSeekTableChk->Checked = config.ComputeSeekTable;
+			ConstantFramesEncodingChk->Checked = config.ConstantFramesEncoding;
+			GroupSizeNum->Value = config.GpuWorkGroupSize;
+			TaskSizeNum->Value= config.FramesPerMultiprocessor;
+			CpuThreadsNum->Value = config.AdditionalCpuThreads;
+			BlockSizeNum->Value = config.BlockSize;
+			TasksPerChannelNum->Value = config.TasksPerChannel;
+			TasksPerWindowNum->Value = config.TasksPerWindow;
 			config.StereoDecorrelationAlgorithm;
 			config.WindowAlgorithm;
 
@@ -106,13 +106,14 @@ namespace MediaCenterFlacCLEncoder {
 	private: System::Windows::Forms::CheckBox^  ComputeMd5HashChk;
 	private: System::Windows::Forms::CheckBox^  OffloadGpuToCpuChk;
 	private: System::Windows::Forms::CheckBox^  RiceEncodingChk;
+	private: System::Windows::Forms::CheckBox^  MappedMemoryChk;
 	protected: 
 
 	protected: 
 
 
 
-	private: System::Windows::Forms::CheckBox^  checkBox5;
+
 	private: System::Windows::Forms::NumericUpDown^  GroupSizeNum;
 	private: System::Windows::Forms::NumericUpDown^  TaskSizeNum;
 
@@ -155,9 +156,11 @@ namespace MediaCenterFlacCLEncoder {
 	private: System::Windows::Forms::CheckBox^  CpuEmulationChk;
 	private: System::Windows::Forms::TextBox^  OpenCLDefinesTxt;
 	private: System::Windows::Forms::TextBox^  OpenCLPlatformTxt;
-	private: System::Windows::Forms::CheckBox^  ConstantEncodingChk;
+private: System::Windows::Forms::CheckBox^  ConstantFramesEncodingChk;
 
-	private: System::Windows::Forms::CheckBox^  CompuetSeekTableChk;
+private: System::Windows::Forms::CheckBox^  ComputeSeekTableChk;
+
+
 
 	private: System::Windows::Forms::CheckBox^  EstimateWindowChk;
 	private: System::Windows::Forms::NumericUpDown^  TasksPerChannelNum;
@@ -190,7 +193,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->ComputeMd5HashChk = (gcnew System::Windows::Forms::CheckBox());
 			this->OffloadGpuToCpuChk = (gcnew System::Windows::Forms::CheckBox());
 			this->RiceEncodingChk = (gcnew System::Windows::Forms::CheckBox());
-			this->checkBox5 = (gcnew System::Windows::Forms::CheckBox());
+			this->MappedMemoryChk = (gcnew System::Windows::Forms::CheckBox());
 			this->GroupSizeNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->TaskSizeNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->CpuThreadsNum = (gcnew System::Windows::Forms::NumericUpDown());
@@ -229,8 +232,8 @@ namespace MediaCenterFlacCLEncoder {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->GroupSizeLbl = (gcnew System::Windows::Forms::Label());
-			this->ConstantEncodingChk = (gcnew System::Windows::Forms::CheckBox());
-			this->CompuetSeekTableChk = (gcnew System::Windows::Forms::CheckBox());
+			this->ConstantFramesEncodingChk = (gcnew System::Windows::Forms::CheckBox());
+			this->ComputeSeekTableChk = (gcnew System::Windows::Forms::CheckBox());
 			this->EstimateWindowChk = (gcnew System::Windows::Forms::CheckBox());
 			this->TasksPerChannelNum = (gcnew System::Windows::Forms::NumericUpDown());
 			this->TasksPerWindowNum = (gcnew System::Windows::Forms::NumericUpDown());
@@ -308,18 +311,18 @@ namespace MediaCenterFlacCLEncoder {
 			this->RiceEncodingChk->Text = L"Do Rice Encoding (experimental)";
 			this->RiceEncodingChk->UseVisualStyleBackColor = true;
 			// 
-			// checkBox5
+			// MappedMemoryChk
 			// 
-			this->checkBox5->AutoSize = true;
-			this->checkBox5->Checked = true;
-			this->checkBox5->CheckState = System::Windows::Forms::CheckState::Indeterminate;
-			this->checkBox5->Location = System::Drawing::Point(6, 8);
-			this->checkBox5->Name = L"checkBox5";
-			this->checkBox5->Size = System::Drawing::Size(127, 17);
-			this->checkBox5->TabIndex = 1;
-			this->checkBox5->Text = L"Use Mapped Memory";
-			this->checkBox5->ThreeState = true;
-			this->checkBox5->UseVisualStyleBackColor = true;
+			this->MappedMemoryChk->AutoSize = true;
+			this->MappedMemoryChk->Checked = true;
+			this->MappedMemoryChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
+			this->MappedMemoryChk->Location = System::Drawing::Point(6, 8);
+			this->MappedMemoryChk->Name = L"MappedMemoryChk";
+			this->MappedMemoryChk->Size = System::Drawing::Size(127, 17);
+			this->MappedMemoryChk->TabIndex = 1;
+			this->MappedMemoryChk->Text = L"Use Mapped Memory";
+			this->MappedMemoryChk->ThreeState = true;
+			this->MappedMemoryChk->UseVisualStyleBackColor = true;
 			// 
 			// GroupSizeNum
 			// 
@@ -645,12 +648,12 @@ namespace MediaCenterFlacCLEncoder {
 			this->AdvancedSettings->Controls->Add(this->label10);
 			this->AdvancedSettings->Controls->Add(this->label7);
 			this->AdvancedSettings->Controls->Add(this->GroupSizeLbl);
-			this->AdvancedSettings->Controls->Add(this->ConstantEncodingChk);
-			this->AdvancedSettings->Controls->Add(this->CompuetSeekTableChk);
+			this->AdvancedSettings->Controls->Add(this->ConstantFramesEncodingChk);
+			this->AdvancedSettings->Controls->Add(this->ComputeSeekTableChk);
 			this->AdvancedSettings->Controls->Add(this->EstimateWindowChk);
 			this->AdvancedSettings->Controls->Add(this->TasksPerChannelNum);
 			this->AdvancedSettings->Controls->Add(this->TasksPerWindowNum);
-			this->AdvancedSettings->Controls->Add(this->checkBox5);
+			this->AdvancedSettings->Controls->Add(this->MappedMemoryChk);
 			this->AdvancedSettings->Controls->Add(this->GroupSizeNum);
 			this->AdvancedSettings->Controls->Add(this->TaskSizeNum);
 			this->AdvancedSettings->Controls->Add(this->WindowFunctionCmb);
@@ -739,31 +742,31 @@ namespace MediaCenterFlacCLEncoder {
 			this->GroupSizeLbl->TabIndex = 20;
 			this->GroupSizeLbl->Text = L"Set GPU work group size (64,128,256):";
 			// 
-			// ConstantEncodingChk
+			// ConstantFramesEncodingChk
 			// 
-			this->ConstantEncodingChk->AutoSize = true;
-			this->ConstantEncodingChk->Checked = true;
-			this->ConstantEncodingChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
-			this->ConstantEncodingChk->Location = System::Drawing::Point(6, 77);
-			this->ConstantEncodingChk->Name = L"ConstantEncodingChk";
-			this->ConstantEncodingChk->Size = System::Drawing::Size(196, 17);
-			this->ConstantEncodingChk->TabIndex = 19;
-			this->ConstantEncodingChk->Text = L"Detect and encode constant frames";
-			this->ConstantEncodingChk->ThreeState = true;
-			this->ConstantEncodingChk->UseVisualStyleBackColor = true;
+			this->ConstantFramesEncodingChk->AutoSize = true;
+			this->ConstantFramesEncodingChk->Checked = true;
+			this->ConstantFramesEncodingChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
+			this->ConstantFramesEncodingChk->Location = System::Drawing::Point(6, 77);
+			this->ConstantFramesEncodingChk->Name = L"ConstantFramesEncodingChk";
+			this->ConstantFramesEncodingChk->Size = System::Drawing::Size(196, 17);
+			this->ConstantFramesEncodingChk->TabIndex = 19;
+			this->ConstantFramesEncodingChk->Text = L"Detect and encode constant frames";
+			this->ConstantFramesEncodingChk->ThreeState = true;
+			this->ConstantFramesEncodingChk->UseVisualStyleBackColor = true;
 			// 
-			// CompuetSeekTableChk
+			// ComputeSeekTableChk
 			// 
-			this->CompuetSeekTableChk->AutoSize = true;
-			this->CompuetSeekTableChk->Checked = true;
-			this->CompuetSeekTableChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
-			this->CompuetSeekTableChk->Location = System::Drawing::Point(6, 54);
-			this->CompuetSeekTableChk->Name = L"CompuetSeekTableChk";
-			this->CompuetSeekTableChk->Size = System::Drawing::Size(126, 17);
-			this->CompuetSeekTableChk->TabIndex = 18;
-			this->CompuetSeekTableChk->Text = L"Compute Seek Table";
-			this->CompuetSeekTableChk->ThreeState = true;
-			this->CompuetSeekTableChk->UseVisualStyleBackColor = true;
+			this->ComputeSeekTableChk->AutoSize = true;
+			this->ComputeSeekTableChk->Checked = true;
+			this->ComputeSeekTableChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
+			this->ComputeSeekTableChk->Location = System::Drawing::Point(6, 54);
+			this->ComputeSeekTableChk->Name = L"ComputeSeekTableChk";
+			this->ComputeSeekTableChk->Size = System::Drawing::Size(126, 17);
+			this->ComputeSeekTableChk->TabIndex = 18;
+			this->ComputeSeekTableChk->Text = L"Compute Seek Table";
+			this->ComputeSeekTableChk->ThreeState = true;
+			this->ComputeSeekTableChk->UseVisualStyleBackColor = true;
 			// 
 			// EstimateWindowChk
 			// 

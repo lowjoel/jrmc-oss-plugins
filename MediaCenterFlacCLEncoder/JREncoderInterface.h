@@ -41,7 +41,7 @@ namespace MediaCenterFlacCLEncoder {
 			boost::tribool MappedMemory;
 			boost::tribool EstimateWindow;
 			boost::tribool ComputeSeekTable;
-			boost::tribool ConstantFrames;
+			boost::tribool ConstantFramesEncoding;
 			int GpuWorkGroupSize;
 			int FramesPerMultiprocessor;
 			int AdditionalCpuThreads;
