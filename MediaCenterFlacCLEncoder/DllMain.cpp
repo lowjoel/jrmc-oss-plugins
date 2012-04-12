@@ -14,6 +14,11 @@ namespace MediaCenterFlacCLEncoder {
 	extern "C" __declspec(dllexport)
 	IJREncoder* CreateEncoder(int nIndex, IJREncoderCallback * pCallback)
 	{
+		if (nIndex == 0)
+		{
+			return new MediaCenterFlacCLEncoderInterface();
+		}
+
 		return nullptr;
 	}
 #pragma endregion
