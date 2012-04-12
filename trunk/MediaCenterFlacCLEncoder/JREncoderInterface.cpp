@@ -3,7 +3,8 @@
 #include "JREncoderInterface.h"
 #include "MediaCenterFlacCLEncoder.h"
 
-#pragma unmanaged
+using namespace System;
+
 namespace MediaCenterFlacCLEncoder {
 	MediaCenterFlacCLEncoderInterface::MediaCenterFlacCLEncoderInterface()
 	{
@@ -21,12 +22,13 @@ namespace MediaCenterFlacCLEncoder {
 	}
 
 #pragma region Buffer-based encoding (must support encoding happening from a worker thread)
-	BOOL MediaCenterFlacCLEncoderInterface::StartBufferBased(WAVEFORMATEX * pwfeFormat, __int64 nApproximateTotalBytes)
+	BOOL MediaCenterFlacCLEncoderInterface::StartBufferBased(WAVEFORMATEX* pwfeFormat, __int64 nApproximateTotalBytes)
 	{
+		Encoder = gcnew MediaCenterFlacCLEncoder(gcnew String(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME)));
 		return FALSE;
 	}
 
-	BOOL MediaCenterFlacCLEncoderInterface::EncodeBufferBased(BYTE * pBuffer, int nBufferBytes)
+	BOOL MediaCenterFlacCLEncoderInterface::EncodeBufferBased(BYTE* pBuffer, int nBufferBytes)
 	{
 		return FALSE;
 	}
@@ -64,6 +66,7 @@ namespace MediaCenterFlacCLEncoder {
 	}
 #pragma endregion
 
+#pragma unmanaged
 #pragma region CreateEncoder
 	/// Export your plugin from a DLL with a single export function CreateEncoder.  You
 	/// can put any number of encoders into a single DLL.  CreateEncoder(...) will be
@@ -77,7 +80,7 @@ namespace MediaCenterFlacCLEncoder {
 
 #pragma region Install/uninstall
 	extern "C" __declspec(dllexport)
-	HRESULT __stdcall DllRegisterServer(void)
+	HRESULT __cdecl DllRegisterServer(void)
 	{
 		HKEY key = { 0 };
 		if (RegCreateKeyEx(HKEY_LOCAL_MACHINE,
@@ -118,7 +121,7 @@ namespace MediaCenterFlacCLEncoder {
 	}
 
 	extern "C" __declspec(dllexport)
-	HRESULT __stdcall DllUnregisterServer(void)
+	HRESULT __cdecl DllUnregisterServer(void)
 	{
 		if (RegDeleteKeyEx(HKEY_LOCAL_MACHINE,
 			L"SOFTWARE\\J. River\\Media Jukebox\\Plugins\\Encoders\\FlacCL Encoder",
