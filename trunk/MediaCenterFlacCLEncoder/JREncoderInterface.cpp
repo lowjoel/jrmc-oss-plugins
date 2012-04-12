@@ -110,6 +110,11 @@ namespace MediaCenterFlacCLEncoder {
 		filePath += L'.' + gcnew String(BStr(GetInfo(JR_ENCODER_INFO_EXTENSION)));
 		Encoder = gcnew MediaCenterFlacCLEncoder(filePath, format);
 		SetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME, filePath);
+
+		//Set the settings
+		Config config(BStr(GetInfo(JR_ENCODER_INFO_SETTINGS)));
+		Encoder->Configure(config);
+
 		return TRUE;
 	}
 
