@@ -17,7 +17,6 @@ namespace MediaCenterFlacCLEncoder {
 		Writer = gcnew FLACCLWriter(outPath,
 				gcnew FileStream(outPath, FileMode::Create, FileAccess::Write),
 				format);
-		Writer->FinalSampleCount = 0;
 	}
 
 	Assembly^ MediaCenterFlacCLEncoder::LoadDependencies(Object^ sender, ResolveEventArgs^ args)
@@ -29,5 +28,14 @@ namespace MediaCenterFlacCLEncoder {
 
 		Assembly^ assembly = Assembly::LoadFrom(assemblyPath);
 		return assembly;
+	}
+
+	void MediaCenterFlacCLEncoder::Write(array<Byte>^ data)
+	{
+	}
+
+	void MediaCenterFlacCLEncoder::Finish()
+	{
+		Writer->Close();
 	}
 }

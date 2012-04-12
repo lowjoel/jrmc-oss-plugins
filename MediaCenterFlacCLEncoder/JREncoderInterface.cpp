@@ -99,6 +99,8 @@ namespace MediaCenterFlacCLEncoder {
 	BOOL MediaCenterFlacCLEncoderInterface::StartBufferBased(WAVEFORMATEX* pwfeFormat,
 		__int64 nApproximateTotalBytes)
 	{
+		System::Diagnostics::Debug::Assert(!Encoder);
+
 		AudioPCMConfig^ format = gcnew AudioPCMConfig(pwfeFormat->wBitsPerSample, pwfeFormat->nChannels,
 			pwfeFormat->nSamplesPerSec);
 		Encoder = gcnew MediaCenterFlacCLEncoder(
@@ -109,12 +111,24 @@ namespace MediaCenterFlacCLEncoder {
 	BOOL MediaCenterFlacCLEncoderInterface::EncodeBufferBased(BYTE* pBuffer,
 		int nBufferBytes)
 	{
-		return FALSE;
+		//Check if we have anything to write.
+		if (!nBufferBytes)
+		{
+			return TRUE;
+		}
+
+		array<Byte>^ buffer = gcnew array<Byte>(nBufferBytes);
+		pin_ptr<byte> bufferPtr = &buffer[0];
+		memcpy(bufferPtr, pBuffer, nBufferBytes);
+
+		Encoder->Write(buffer);
+		return TRUE;
 	}
 
 	BOOL MediaCenterFlacCLEncoderInterface::FinishBufferBased()
 	{
-		return FALSE;
+		Encoder->Finish();
+		return TRUE;
 	}
 #pragma endregion
 
