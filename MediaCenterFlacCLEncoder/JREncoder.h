@@ -56,8 +56,6 @@ enum JR_ENCODER_CONFIGURABLE_TYPES
 	JR_ENCODER_CONFIGURABLE_MANDATORY,
 };
 
-#include "SharedFiles/AudioFormatIncludes.h"
-
 /**************************************************************************************************************
 IJREncoderCallback
 **************************************************************************************************************/
@@ -87,7 +85,7 @@ public:
 	virtual BOOL StopFileBased() = 0;
 
 	// buffer-based encoding (must support encoding happening from a worker thread)
-	virtual BOOL StartBufferBased(WAVEFORMATEX * pwfeFormat, int64 nApproximateTotalBytes) = 0;
+	virtual BOOL StartBufferBased(WAVEFORMATEX * pwfeFormat, __int64 nApproximateTotalBytes) = 0;
 	virtual BOOL EncodeBufferBased(BYTE * pBuffer, int nBufferBytes) = 0;
 	virtual BOOL FinishBufferBased() = 0;
 
