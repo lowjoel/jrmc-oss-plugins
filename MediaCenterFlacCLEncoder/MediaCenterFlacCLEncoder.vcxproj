@@ -76,6 +76,7 @@
     <Reference Include="CUETools.Codecs.FLACCL, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.FLACCL.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
