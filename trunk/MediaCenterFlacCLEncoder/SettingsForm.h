@@ -210,6 +210,8 @@ namespace MediaCenterFlacCLEncoder {
 			// ComputeMd5HashChk
 			// 
 			this->ComputeMd5HashChk->AutoSize = true;
+			this->ComputeMd5HashChk->Checked = true;
+			this->ComputeMd5HashChk->CheckState = System::Windows::Forms::CheckState::Checked;
 			this->ComputeMd5HashChk->Location = System::Drawing::Point(113, 120);
 			this->ComputeMd5HashChk->Name = L"ComputeMd5HashChk";
 			this->ComputeMd5HashChk->Size = System::Drawing::Size(122, 17);
@@ -240,37 +242,43 @@ namespace MediaCenterFlacCLEncoder {
 			// checkBox5
 			// 
 			this->checkBox5->AutoSize = true;
+			this->checkBox5->Checked = true;
+			this->checkBox5->CheckState = System::Windows::Forms::CheckState::Indeterminate;
 			this->checkBox5->Location = System::Drawing::Point(6, 8);
 			this->checkBox5->Name = L"checkBox5";
 			this->checkBox5->Size = System::Drawing::Size(127, 17);
-			this->checkBox5->TabIndex = 4;
+			this->checkBox5->TabIndex = 1;
 			this->checkBox5->Text = L"Use Mapped Memory";
+			this->checkBox5->ThreeState = true;
 			this->checkBox5->UseVisualStyleBackColor = true;
 			// 
 			// GroupSizeNum
 			// 
 			this->GroupSizeNum->Location = System::Drawing::Point(220, 100);
 			this->GroupSizeNum->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {256, 0, 0, 0});
-			this->GroupSizeNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {64, 0, 0, 0});
+			this->GroupSizeNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			this->GroupSizeNum->Name = L"GroupSizeNum";
 			this->GroupSizeNum->Size = System::Drawing::Size(120, 20);
 			this->GroupSizeNum->TabIndex = 5;
-			this->GroupSizeNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {128, 0, 0, 0});
+			this->GroupSizeNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// TaskSizeNum
 			// 
 			this->TaskSizeNum->Location = System::Drawing::Point(220, 126);
+			this->TaskSizeNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			this->TaskSizeNum->Name = L"TaskSizeNum";
 			this->TaskSizeNum->Size = System::Drawing::Size(120, 20);
 			this->TaskSizeNum->TabIndex = 6;
-			this->TaskSizeNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {8, 0, 0, 0});
+			this->TaskSizeNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// CpuThreadsNum
 			// 
 			this->CpuThreadsNum->Location = System::Drawing::Point(220, 152);
+			this->CpuThreadsNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			this->CpuThreadsNum->Name = L"CpuThreadsNum";
 			this->CpuThreadsNum->Size = System::Drawing::Size(120, 20);
 			this->CpuThreadsNum->TabIndex = 10;
+			this->CpuThreadsNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// CompressionLevelSlider
 			// 
@@ -289,6 +297,7 @@ namespace MediaCenterFlacCLEncoder {
 			// 
 			this->StereoDecorrelationCmb->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->StereoDecorrelationCmb->FormattingEnabled = true;
+			this->StereoDecorrelationCmb->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Search", L"Independent"});
 			this->StereoDecorrelationCmb->Location = System::Drawing::Point(516, 6);
 			this->StereoDecorrelationCmb->Name = L"StereoDecorrelationCmb";
 			this->StereoDecorrelationCmb->Size = System::Drawing::Size(121, 21);
@@ -298,6 +307,8 @@ namespace MediaCenterFlacCLEncoder {
 			// 
 			this->WindowFunctionCmb->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->WindowFunctionCmb->FormattingEnabled = true;
+			this->WindowFunctionCmb->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Welch", L"Tukey", L"Hann", L"Flattop", 
+				L"Bartlett", L"Tukey-Flattop"});
 			this->WindowFunctionCmb->Location = System::Drawing::Point(516, 33);
 			this->WindowFunctionCmb->Name = L"WindowFunctionCmb";
 			this->WindowFunctionCmb->Size = System::Drawing::Size(121, 21);
@@ -374,7 +385,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->label4->Location = System::Drawing::Point(3, 48);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(86, 26);
-			this->label4->TabIndex = 3;
+			this->label4->TabIndex = 5;
 			this->label4->Text = L"Prediction Order:";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
@@ -384,7 +395,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->label5->Location = System::Drawing::Point(3, 74);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(86, 26);
-			this->label5->TabIndex = 4;
+			this->label5->TabIndex = 8;
 			this->label5->Text = L"Fixed Order:";
 			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
@@ -394,7 +405,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->label6->Location = System::Drawing::Point(3, 100);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(86, 26);
-			this->label6->TabIndex = 5;
+			this->label6->TabIndex = 11;
 			this->label6->Text = L"Precision:";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			// 
@@ -420,7 +431,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown6->Location = System::Drawing::Point(192, 77);
 			this->numericUpDown6->Name = L"numericUpDown6";
 			this->numericUpDown6->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown6->TabIndex = 11;
+			this->numericUpDown6->TabIndex = 10;
 			// 
 			// numericUpDown5
 			// 
@@ -428,7 +439,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown5->Location = System::Drawing::Point(95, 77);
 			this->numericUpDown5->Name = L"numericUpDown5";
 			this->numericUpDown5->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown5->TabIndex = 10;
+			this->numericUpDown5->TabIndex = 9;
 			// 
 			// numericUpDown4
 			// 
@@ -437,7 +448,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown4->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
 			this->numericUpDown4->Name = L"numericUpDown4";
 			this->numericUpDown4->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown4->TabIndex = 9;
+			this->numericUpDown4->TabIndex = 7;
 			// 
 			// numericUpDown3
 			// 
@@ -446,7 +457,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
 			this->numericUpDown3->Name = L"numericUpDown3";
 			this->numericUpDown3->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown3->TabIndex = 8;
+			this->numericUpDown3->TabIndex = 6;
 			// 
 			// numericUpDown2
 			// 
@@ -454,7 +465,7 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown2->Location = System::Drawing::Point(192, 25);
 			this->numericUpDown2->Name = L"numericUpDown2";
 			this->numericUpDown2->Size = System::Drawing::Size(92, 20);
-			this->numericUpDown2->TabIndex = 7;
+			this->numericUpDown2->TabIndex = 4;
 			// 
 			// numericUpDown1
 			// 
@@ -462,14 +473,16 @@ namespace MediaCenterFlacCLEncoder {
 			this->numericUpDown1->Location = System::Drawing::Point(95, 25);
 			this->numericUpDown1->Name = L"numericUpDown1";
 			this->numericUpDown1->Size = System::Drawing::Size(91, 20);
-			this->numericUpDown1->TabIndex = 6;
+			this->numericUpDown1->TabIndex = 3;
 			// 
 			// BlockSizeNum
 			// 
 			this->BlockSizeNum->Location = System::Drawing::Point(220, 178);
+			this->BlockSizeNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			this->BlockSizeNum->Name = L"BlockSizeNum";
 			this->BlockSizeNum->Size = System::Drawing::Size(120, 20);
 			this->BlockSizeNum->TabIndex = 14;
+			this->BlockSizeNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// PaddingBytesNum
 			// 
@@ -669,48 +682,59 @@ namespace MediaCenterFlacCLEncoder {
 			// TasksPerWindowNum
 			// 
 			this->TasksPerWindowNum->Location = System::Drawing::Point(220, 230);
+			this->TasksPerWindowNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			this->TasksPerWindowNum->Name = L"TasksPerWindowNum";
 			this->TasksPerWindowNum->Size = System::Drawing::Size(120, 20);
 			this->TasksPerWindowNum->TabIndex = 15;
+			this->TasksPerWindowNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// TasksPerChannelNum
 			// 
 			this->TasksPerChannelNum->Location = System::Drawing::Point(220, 204);
 			this->TasksPerChannelNum->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) {32, 0, 0, 0});
+			this->TasksPerChannelNum->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			this->TasksPerChannelNum->Name = L"TasksPerChannelNum";
 			this->TasksPerChannelNum->Size = System::Drawing::Size(120, 20);
 			this->TasksPerChannelNum->TabIndex = 16;
+			this->TasksPerChannelNum->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) {1, 0, 0, System::Int32::MinValue});
 			// 
 			// EstimateWindowChk
 			// 
 			this->EstimateWindowChk->AutoSize = true;
+			this->EstimateWindowChk->Checked = true;
+			this->EstimateWindowChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
 			this->EstimateWindowChk->Location = System::Drawing::Point(6, 31);
 			this->EstimateWindowChk->Name = L"EstimateWindowChk";
 			this->EstimateWindowChk->Size = System::Drawing::Size(108, 17);
 			this->EstimateWindowChk->TabIndex = 17;
 			this->EstimateWindowChk->Text = L"Estimate Window";
+			this->EstimateWindowChk->ThreeState = true;
 			this->EstimateWindowChk->UseVisualStyleBackColor = true;
 			// 
 			// CompuetSeekTableChk
 			// 
 			this->CompuetSeekTableChk->AutoSize = true;
 			this->CompuetSeekTableChk->Checked = true;
-			this->CompuetSeekTableChk->CheckState = System::Windows::Forms::CheckState::Checked;
+			this->CompuetSeekTableChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
 			this->CompuetSeekTableChk->Location = System::Drawing::Point(6, 54);
 			this->CompuetSeekTableChk->Name = L"CompuetSeekTableChk";
 			this->CompuetSeekTableChk->Size = System::Drawing::Size(126, 17);
 			this->CompuetSeekTableChk->TabIndex = 18;
 			this->CompuetSeekTableChk->Text = L"Compute Seek Table";
+			this->CompuetSeekTableChk->ThreeState = true;
 			this->CompuetSeekTableChk->UseVisualStyleBackColor = true;
 			// 
 			// ConstantEncodingChk
 			// 
 			this->ConstantEncodingChk->AutoSize = true;
+			this->ConstantEncodingChk->Checked = true;
+			this->ConstantEncodingChk->CheckState = System::Windows::Forms::CheckState::Indeterminate;
 			this->ConstantEncodingChk->Location = System::Drawing::Point(6, 77);
 			this->ConstantEncodingChk->Name = L"ConstantEncodingChk";
 			this->ConstantEncodingChk->Size = System::Drawing::Size(196, 17);
 			this->ConstantEncodingChk->TabIndex = 19;
 			this->ConstantEncodingChk->Text = L"Detect and encode constant frames";
+			this->ConstantEncodingChk->ThreeState = true;
 			this->ConstantEncodingChk->UseVisualStyleBackColor = true;
 			// 
 			// GroupSizeLbl
