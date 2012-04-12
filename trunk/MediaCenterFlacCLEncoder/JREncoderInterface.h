@@ -17,6 +17,51 @@ namespace MediaCenterFlacCLEncoder {
 		typedef std::map<std::wstring, std::wstring, wstring_comparer> SettingsMap;
 
 	public:
+		/// Stores configuration options for the FlacCL Encoder.
+		struct Config
+		{
+		public:
+			/// Default constructor.
+			Config();
+
+			/// Construct a Config object from the serialised equivalent.
+			Config(const std::wstring& str);
+
+			/// Serialises the configuration.
+			operator std::wstring() const;
+
+		public:
+			int CompressionLevel;
+			int PaddingBytes;
+			bool VerifyEncoding;
+			bool ComputeMd5Hash;
+			bool OffloadTasksToCpu;
+			bool DoRiceEncoding;
+
+			boost::tribool MappedMemory;
+			boost::tribool EstimateWindow;
+			boost::tribool ComputeSeekTable;
+			boost::tribool ConstantFrames;
+			int GpuWorkGroupSize;
+			int FramesPerMultiprocessor;
+			int AdditionalCpuThreads;
+			int BlockSize;
+			int TasksPerChannel;
+			int TasksPerWindow;
+			int StereoDecorrelationAlgorithm;
+			int WindowAlgorithm;
+
+			std::pair<int, int> PartitionOrder;
+			std::pair<int, int> PredictionOrder;
+			std::pair<int, int> FixedOrder;
+			std::pair<int, int> Precision;
+
+			std::wstring OpenCLDefines;
+			std::wstring OpenCLPlatform;
+			bool UseCpuEmulation;
+		};
+
+	public:
 		MediaCenterFlacCLEncoderInterface();
 		virtual ~MediaCenterFlacCLEncoderInterface();
 

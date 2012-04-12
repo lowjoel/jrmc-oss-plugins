@@ -156,7 +156,12 @@ namespace MediaCenterFlacCLEncoder {
 	BOOL MediaCenterFlacCLEncoderInterface::Options()
 	{
 		SettingsForm form;
-		form.ShowDialog();
+		if (form.ShowDialog() == DialogResult::OK)
+		{
+			Config config(form.GetConfig());
+			SetInfo(JR_ENCODER_INFO_SETTINGS, config);
+		}
+
 		return TRUE;
 	}
 #pragma endregion

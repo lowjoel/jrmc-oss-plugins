@@ -59,6 +59,9 @@
     <ClCompile Include="SettingsForm.cpp">
       <Filter>Forms</Filter>
     </ClCompile>
+    <ClCompile Include="JREncoderInterfaceConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico">

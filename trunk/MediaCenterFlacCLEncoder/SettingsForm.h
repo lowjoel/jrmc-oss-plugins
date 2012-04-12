@@ -1,4 +1,5 @@
 #pragma once
+#include "JREncoderInterface.h"
 
 namespace MediaCenterFlacCLEncoder {
 
@@ -20,6 +21,74 @@ namespace MediaCenterFlacCLEncoder {
 			InitializeComponent();
 			ToolTip->SetToolTip(OffloadGpuToCpuChk, L"Useful for increasing the encoding speed of slow GPUs.");
 			ToolTip->SetToolTip(RiceEncodingChk, L"Improves compression, but computationally expensive: useful for fast GPUs.");
+		}
+
+		MediaCenterFlacCLEncoderInterface::Config GetConfig()
+		{
+			MediaCenterFlacCLEncoderInterface::Config result;
+			
+			result.CompressionLevel = CompressionLevelSlider->Value;
+			result.PaddingBytes;
+			result.VerifyEncoding;
+			result.ComputeMd5Hash;
+			result.OffloadTasksToCpu;
+			result.DoRiceEncoding;
+
+			result.MappedMemory;
+			result.EstimateWindow;
+			result.ComputeSeekTable;
+			result.ConstantFrames;
+			result.GpuWorkGroupSize;
+			result.FramesPerMultiprocessor;
+			result.AdditionalCpuThreads;
+			result.BlockSize;
+			result.TasksPerChannel;
+			result.TasksPerWindow;
+			result.StereoDecorrelationAlgorithm;
+			result.WindowAlgorithm;
+
+			result.PartitionOrder;
+			result.PredictionOrder;
+			result.FixedOrder;
+			result.Precision;
+
+			result.OpenCLDefines;
+			result.OpenCLPlatform;
+			result.UseCpuEmulation;
+
+			return result;
+		}
+
+		void SetConfig(const MediaCenterFlacCLEncoderInterface::Config& config)
+		{
+			config.CompressionLevel;
+			config.PaddingBytes;
+			config.VerifyEncoding;
+			config.ComputeMd5Hash;
+			config.OffloadTasksToCpu;
+			config.DoRiceEncoding;
+
+			config.MappedMemory;
+			config.EstimateWindow;
+			config.ComputeSeekTable;
+			config.ConstantFrames;
+			config.GpuWorkGroupSize;
+			config.FramesPerMultiprocessor;
+			config.AdditionalCpuThreads;
+			config.BlockSize;
+			config.TasksPerChannel;
+			config.TasksPerWindow;
+			config.StereoDecorrelationAlgorithm;
+			config.WindowAlgorithm;
+
+			config.PartitionOrder;
+			config.PredictionOrder;
+			config.FixedOrder;
+			config.Precision;
+
+			config.OpenCLDefines;
+			config.OpenCLPlatform;
+			config.UseCpuEmulation;
 		}
 
 	protected:
