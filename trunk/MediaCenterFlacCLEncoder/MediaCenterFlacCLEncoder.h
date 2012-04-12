@@ -10,6 +10,9 @@ namespace MediaCenterFlacCLEncoder {
 		void Write(array<System::Byte>^ data);
 		void Finish();
 
+		/// Terminates encoding and deletes the temporary file.
+		void Terminate();
+
 		static System::Reflection::Assembly^ LoadDependencies(System::Object^ sender,
 			System::ResolveEventArgs^ args);
 

@@ -56,5 +56,8 @@ namespace MediaCenterFlacCLEncoder {
 
 		/// Settings set by JRMC
 		SettingsMap Settings;
+
+		/// Last error encountered
+		gcroot<System::Exception^> LastError;
 	};
 }
