@@ -7,6 +7,8 @@
 
 #include <tchar.h>
 #include <vcclr.h>
+#include <msclr/marshal.h>
+#include <msclr/marshal_cppstd.h>
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
