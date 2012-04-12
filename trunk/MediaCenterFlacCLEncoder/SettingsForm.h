@@ -47,10 +47,10 @@ namespace MediaCenterFlacCLEncoder {
 			result.StereoDecorrelationAlgorithm;
 			result.WindowAlgorithm;
 
-			result.PartitionOrder = std::pair<int, int>((Int32), (Int32));
-			result.PredictionOrder;
-			result.FixedOrder;
-			result.Precision;
+			result.PartitionOrder = std::pair<int, int>((Int32)PartitionOrderMinNum->Value, (Int32)PartitionOrderMaxNum->Value);
+			result.PredictionOrder = std::pair<int, int>((Int32)PredictionOrderMinNum->Value, (Int32)PredictionOrderMaxNum->Value);
+			result.FixedOrder = std::pair<int, int>((Int32)FixedOrderMinNum->Value, (Int32)FixedOrderMaxNum->Value);
+			result.Precision = std::pair<int, int>((Int32)PrecisionMinNum->Value, (Int32)PrecisionMaxNum->Value);
 
 			result.OpenCLDefines;
 			result.OpenCLPlatform;
@@ -81,10 +81,14 @@ namespace MediaCenterFlacCLEncoder {
 			config.StereoDecorrelationAlgorithm;
 			config.WindowAlgorithm;
 
-			config.PartitionOrder;
-			config.PredictionOrder;
-			config.FixedOrder;
-			config.Precision;
+			PartitionOrderMinNum->Value = config.PartitionOrder.first;
+			PartitionOrderMaxNum->Value = config.PartitionOrder.second;
+			PredictionOrderMinNum->Value = config.PredictionOrder.first;
+			PredictionOrderMaxNum->Value = config.PredictionOrder.second;
+			FixedOrderMinNum->Value = config.FixedOrder.first;
+			FixedOrderMaxNum->Value = config.FixedOrder.second;
+			PrecisionMinNum->Value = config.Precision.first;
+			PrecisionMaxNum->Value = config.Precision.second;
 
 			config.OpenCLDefines;
 			config.OpenCLPlatform;
