@@ -3,6 +3,7 @@
 #include "JREncoderInterface.h"
 #include "MediaCenterFlacCLEncoder.h"
 #include "DllMain.h"
+#include "SettingsForm.h"
 
 using namespace System;
 using namespace CUETools::Codecs;
@@ -17,6 +18,7 @@ namespace MediaCenterFlacCLEncoder {
 		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_WAV_FILE_INPUT,			L"1"));
 		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_BUFFER_INPUT,				L"1"));
 		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_UNCOMPRESSED_WAV_OUTPUT,	L"0"));
+		Settings.insert(std::pair<std::wstring, std::wstring>(JR_ENCODER_INFO_CONFIGURABLE,				boost::lexical_cast<std::wstring>(JR_ENCODER_CONFIGURABLE_YES)));
 	}
 
 	MediaCenterFlacCLEncoderInterface::~MediaCenterFlacCLEncoderInterface()
@@ -153,7 +155,9 @@ namespace MediaCenterFlacCLEncoder {
 #pragma region Configuration dialog (can show user interface)
 	BOOL MediaCenterFlacCLEncoderInterface::Options()
 	{
-		return FALSE;
+		SettingsForm form;
+		form.ShowDialog();
+		return TRUE;
 	}
 #pragma endregion
 
