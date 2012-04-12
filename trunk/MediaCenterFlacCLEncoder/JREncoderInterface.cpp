@@ -106,7 +106,6 @@ namespace MediaCenterFlacCLEncoder {
 	extern "C" __declspec(dllexport)
 	HRESULT __stdcall DllUnregisterServer(void)
 	{
-		HKEY key = { 0 };
 		if (RegDeleteKeyEx(HKEY_LOCAL_MACHINE,
 			L"SOFTWARE\\J. River\\Media Jukebox\\Plugins\\Encoders\\FlacCL Encoder",
 #ifdef _WIN64
