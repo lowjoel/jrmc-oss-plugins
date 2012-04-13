@@ -1017,7 +1017,7 @@ private: System::Windows::Forms::Label^  StereoDecorrelationLbl;
 
 		}
 #pragma endregion
-private: System::Void OkBtn_Click(System::Object^  sender, System::EventArgs^  e) {
+		private: System::Void OkBtn_Click(System::Object^ /*sender*/, System::EventArgs^ /*e*/) {
 			 DialogResult = System::Windows::Forms::DialogResult::OK;
 			 Close();
 		 }
