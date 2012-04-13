@@ -75,7 +75,7 @@ namespace MediaCenterFlacCLEncoder {
 			RegSetDWordValue(key, L"IVersion", JR_ENCODER_CURRENT_VERSION);
 			returnCode = S_OK;
 		}
-		catch (DWORD error)
+		catch (DWORD /*error*/)
 		{
 			throw;
 		}
@@ -100,7 +100,7 @@ namespace MediaCenterFlacCLEncoder {
 
 #pragma region Buffer-based encoding (must support encoding happening from a worker thread)
 	BOOL MediaCenterFlacCLEncoderInterface::StartBufferBased(WAVEFORMATEX* pwfeFormat,
-		__int64 nApproximateTotalBytes)
+		__int64 /*nApproximateTotalBytes*/)
 	{
 		System::Diagnostics::Debug::Assert(!Encoder);
 

@@ -55,7 +55,7 @@ namespace MediaCenterFlacCLEncoder {
 
 			*this = temp;
 		}
-		catch (boost::archive::archive_exception& e)
+		catch (boost::archive::archive_exception& /*e*/)
 		{
 			*this = Config();
 		}
@@ -71,7 +71,7 @@ namespace MediaCenterFlacCLEncoder {
 	}
 
 	template<typename Archive>
-	void MediaCenterFlacCLEncoderInterface::Config::serialize(Archive& ar, const unsigned int version)
+	void MediaCenterFlacCLEncoderInterface::Config::serialize(Archive& ar, const unsigned int /*version*/)
 	{
 		ar & CompressionLevel;
 		ar & PaddingBytes;
@@ -108,14 +108,14 @@ namespace MediaCenterFlacCLEncoder {
 namespace boost {
 namespace serialization {
 	template<class Archive>
-	void serialize(Archive& ar, std::pair<int, int>& pair, const unsigned int version)
+	void serialize(Archive& ar, std::pair<int, int>& pair, const unsigned int /*version*/)
 	{
 		ar & pair.first;
 		ar & pair.second;
 	}
 
 	template<class Archive>
-	void serialize(Archive& ar, boost::tribool& value, const unsigned int version)
+	void serialize(Archive& ar, boost::tribool& value, const unsigned int /*version*/)
 	{
 		ar & value.value;
 	}

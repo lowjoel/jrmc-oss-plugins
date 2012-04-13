@@ -66,7 +66,7 @@ namespace MediaCenterFlacCLEncoder {
 	/// can put any number of encoders into a single DLL.  CreateEncoder(...) will be
 	/// called with the index 0, 1, 2, etc. until a NULL encoder is returned.
 	extern "C" __declspec(dllexport)
-	IJREncoder* CreateEncoder(int nIndex, IJREncoderCallback * pCallback)
+	IJREncoder* CreateEncoder(int nIndex, IJREncoderCallback* /*pCallback*/)
 	{
 		return EncoderRegistrationRegistrar::CreateEncoder(nIndex);
 	}
@@ -87,7 +87,7 @@ namespace MediaCenterFlacCLEncoder {
 #pragma endregion
 }
 
-BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
+BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID /*lpvReserved*/)
 {
 	if (fdwReason == DLL_PROCESS_ATTACH)
 	{
