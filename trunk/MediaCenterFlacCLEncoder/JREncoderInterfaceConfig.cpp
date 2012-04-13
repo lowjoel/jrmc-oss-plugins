@@ -99,6 +99,8 @@ namespace MediaCenterFlacCLEncoder {
 		ar & FixedOrder;
 		ar & Precision;
 
+		ar & OpenCLDefines;
+		ar & OpenCLPlatform;
 		ar & UseCpuEmulation;
 	}
 }
