@@ -19,7 +19,7 @@ namespace MediaCenterFlacCLEncoder {
 			format);
 	}
 
-	Assembly^ MediaCenterFlacCLEncoder::LoadDependencies(Object^ sender, ResolveEventArgs^ args)
+	Assembly^ MediaCenterFlacCLEncoder::LoadDependencies(Object^ /*sender*/, ResolveEventArgs^ args)
 	{
 		String^ folderPath = Path::GetDirectoryName(Assembly::GetExecutingAssembly()->Location);
 		String^ assemblyPath = Path::Combine(folderPath, (gcnew AssemblyName(args->Name))->Name + ".dll");
