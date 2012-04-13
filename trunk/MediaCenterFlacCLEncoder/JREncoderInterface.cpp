@@ -211,8 +211,7 @@ namespace MediaCenterFlacCLEncoder {
 
 	BOOL MediaCenterFlacCLEncoderInterface::SetInfo(const std::wstring& pName, System::String^ pValue)
 	{
-		msclr::interop::marshal_context marshal;
-		std::wstring value(marshal.marshal_as<std::wstring>(pValue));
+		std::wstring value(msclr::interop::marshal_as<std::wstring>(pValue));
 
 		Settings[pName] = value;
 		return TRUE;
