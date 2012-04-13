@@ -29,7 +29,7 @@ Source: ..\..\bin\Release\Win32\MediaCenterFlacCLEncoder.dll; DestDir: {app}; Fl
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Run]
-Filename: "regsvr32"; Parameters: """{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
 
 [UninstallRun]
-Filename: "regsvr32"; Parameters: "/u ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering Plugin"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s /u ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering Plugin"; Flags:runhidden
