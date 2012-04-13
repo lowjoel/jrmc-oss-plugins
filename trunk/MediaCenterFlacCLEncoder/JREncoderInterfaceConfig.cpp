@@ -5,6 +5,9 @@ namespace boost {
 namespace serialization {
 	template<class Archive>
 	void serialize(Archive& ar, std::pair<int, int>& pair, const unsigned int version);
+
+	template<class Archive>
+	void serialize(Archive& ar, boost::tribool& value, const unsigned int version);
 }
 }
 
@@ -17,6 +20,11 @@ namespace MediaCenterFlacCLEncoder {
 		ComputeMd5Hash = false;
 		OffloadTasksToCpu = false;
 		DoRiceEncoding = false;
+
+		MappedMemory = boost::indeterminate;
+		EstimateWindow = boost::indeterminate;
+		ComputeSeekTable = boost::indeterminate;
+		ConstantFramesEncoding = boost::indeterminate;
 
 		GpuWorkGroupSize = -1;
 		FramesPerMultiprocessor = -1;
@@ -40,10 +48,17 @@ namespace MediaCenterFlacCLEncoder {
 		std::wistringstream stream(str);
 		boost::archive::text_wiarchive archive(stream);
 
-		Config temp;
-		archive >> temp;
+		try
+		{
+			Config temp;
+			archive >> temp;
 
-		*this = temp;
+			*this = temp;
+		}
+		catch (boost::archive::archive_exception& e)
+		{
+			*this = Config();
+		}
 	}
 
 	MediaCenterFlacCLEncoderInterface::Config::operator std::wstring() const
@@ -64,6 +79,11 @@ namespace MediaCenterFlacCLEncoder {
 		ar & ComputeMd5Hash;
 		ar & OffloadTasksToCpu;
 		ar & DoRiceEncoding;
+
+		ar & MappedMemory;
+		ar & EstimateWindow;
+		ar & ComputeSeekTable;
+		ar & ConstantFramesEncoding;
 
 		ar & GpuWorkGroupSize;
 		ar & FramesPerMultiprocessor;
@@ -90,6 +110,12 @@ namespace serialization {
 	{
 		ar & pair.first;
 		ar & pair.second;
+	}
+
+	template<class Archive>
+	void serialize(Archive& ar, boost::tribool& value, const unsigned int version)
+	{
+		ar & value.value;
 	}
 }
 }
