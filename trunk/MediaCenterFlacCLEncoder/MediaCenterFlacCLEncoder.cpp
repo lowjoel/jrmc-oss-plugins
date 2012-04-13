@@ -60,8 +60,13 @@ namespace MediaCenterFlacCLEncoder {
 			Writer->OrdersPerChannel = config.TasksPerChannel;
 		if (config.TasksPerWindow != -1)
 			Writer->OrdersPerWindow = config.TasksPerWindow;
-		int StereoDecorrelationAlgorithm;
-		int WindowAlgorithm;
+
+		if (config.StereoDecorrelationAlgorithm != -1)
+			Writer->StereoMethod = (CUETools::Codecs::FLAKE::StereoMethod)
+				config.StereoDecorrelationAlgorithm;
+		if (config.WindowAlgorithm != -1)
+			Writer->WindowFunction = (CUETools::Codecs::FLAKE::WindowFunction)
+				config.WindowAlgorithm;
 
 		if (config.PartitionOrder.first > 0)
 			Writer->MinPartitionOrder = config.PartitionOrder.first;

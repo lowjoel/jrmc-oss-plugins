@@ -77,6 +77,9 @@
     <Reference Include="CUETools.Codecs.FLACCL, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.FLACCL.dll</HintPath>
     </Reference>
+    <Reference Include="CUETools.Codecs.FLAKE, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.FLAKE.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="OpenCLNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\Applications\CueTools\bin\Release\OpenCLNet.dll</HintPath>

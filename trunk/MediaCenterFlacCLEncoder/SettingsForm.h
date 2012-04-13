@@ -44,8 +44,23 @@ namespace MediaCenterFlacCLEncoder {
 			result.BlockSize = (System::Int32)BlockSizeNum->Value;
 			result.TasksPerChannel = (System::Int32)TasksPerChannelNum->Value;
 			result.TasksPerWindow = (System::Int32)TasksPerWindowNum->Value;
-			result.StereoDecorrelationAlgorithm;
-			result.WindowAlgorithm;
+			
+			result.StereoDecorrelationAlgorithm = -1;
+			switch (StereoDecorrelationCmb->SelectedIndex)
+			{
+			case 1:
+				result.StereoDecorrelationAlgorithm = (int)CUETools::Codecs::FLAKE::StereoMethod::Search;
+				break;
+			case 2:
+				result.StereoDecorrelationAlgorithm = (int)CUETools::Codecs::FLAKE::StereoMethod::Independent;
+				break;
+			}
+			result.WindowAlgorithm = -1;
+			if (WindowFunctionCmb->SelectedIndex == WindowFunctionCmb->Items->Count - 1)
+				result.WindowAlgorithm = (int)CUETools::Codecs::FLAKE::WindowFunction::TukeyFlattop;
+			else
+				for (int i = 0; i <= WindowFunctionCmb->SelectedIndex; ++i)
+					result.WindowAlgorithm = 1 << (i - 1);
 
 			result.PartitionOrder = std::pair<int, int>((Int32)PartitionOrderMinNum->Value, (Int32)PartitionOrderMaxNum->Value);
 			result.PredictionOrder = std::pair<int, int>((Int32)PredictionOrderMinNum->Value, (Int32)PredictionOrderMaxNum->Value);
@@ -78,8 +93,37 @@ namespace MediaCenterFlacCLEncoder {
 			BlockSizeNum->Value = config.BlockSize;
 			TasksPerChannelNum->Value = config.TasksPerChannel;
 			TasksPerWindowNum->Value = config.TasksPerWindow;
-			config.StereoDecorrelationAlgorithm;
-			config.WindowAlgorithm;
+			
+			switch (config.StereoDecorrelationAlgorithm)
+			{
+			case CUETools::Codecs::FLAKE::StereoMethod::Search:
+				StereoDecorrelationCmb->SelectedIndex = 1;
+				break;
+			case CUETools::Codecs::FLAKE::StereoMethod::Independent:
+				StereoDecorrelationCmb->SelectedIndex = 2;
+				break;
+			}
+			switch (config.WindowAlgorithm)
+			{
+			case CUETools::Codecs::FLAKE::WindowFunction::Welch:
+				WindowFunctionCmb->SelectedIndex = 1;
+				break;
+			case CUETools::Codecs::FLAKE::WindowFunction::Tukey: 
+				WindowFunctionCmb->SelectedIndex = 2;
+				break;
+			case CUETools::Codecs::FLAKE::WindowFunction::Hann:
+				WindowFunctionCmb->SelectedIndex = 3;
+				break;
+			case CUETools::Codecs::FLAKE::WindowFunction::Flattop:
+				WindowFunctionCmb->SelectedIndex = 4;
+				break;
+			case CUETools::Codecs::FLAKE::WindowFunction::Bartlett:
+				WindowFunctionCmb->SelectedIndex = 5;
+				break;
+			case CUETools::Codecs::FLAKE::WindowFunction::TukeyFlattop:
+				WindowFunctionCmb->SelectedIndex = 6;
+				break;
+			}
 
 			PartitionOrderMinNum->Value = config.PartitionOrder.first;
 			PartitionOrderMaxNum->Value = config.PartitionOrder.second;
@@ -414,7 +458,7 @@ private: System::Windows::Forms::Label^  StereoDecorrelationLbl;
 			// 
 			this->StereoDecorrelationCmb->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->StereoDecorrelationCmb->FormattingEnabled = true;
-			this->StereoDecorrelationCmb->Items->AddRange(gcnew cli::array< System::Object^  >(2) {L"Search", L"Independent"});
+			this->StereoDecorrelationCmb->Items->AddRange(gcnew cli::array< System::Object^  >(3) {L"", L"Search", L"Independent"});
 			this->StereoDecorrelationCmb->Location = System::Drawing::Point(516, 6);
 			this->StereoDecorrelationCmb->Name = L"StereoDecorrelationCmb";
 			this->StereoDecorrelationCmb->Size = System::Drawing::Size(121, 21);
@@ -424,7 +468,7 @@ private: System::Windows::Forms::Label^  StereoDecorrelationLbl;
 			// 
 			this->WindowFunctionCmb->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->WindowFunctionCmb->FormattingEnabled = true;
-			this->WindowFunctionCmb->Items->AddRange(gcnew cli::array< System::Object^  >(6) {L"Welch", L"Tukey", L"Hann", L"Flattop", 
+			this->WindowFunctionCmb->Items->AddRange(gcnew cli::array< System::Object^  >(7) {L"", L"Welch", L"Tukey", L"Hann", L"Flattop", 
 				L"Bartlett", L"Tukey-Flattop"});
 			this->WindowFunctionCmb->Location = System::Drawing::Point(516, 33);
 			this->WindowFunctionCmb->Name = L"WindowFunctionCmb";
