@@ -111,14 +111,10 @@ namespace MediaCenterFlacCLEncoder {
 				defineStr.append(L"\n");
 			}
 
-			msclr::interop::marshal_context marshal;
-			encoderSettings->Defines = marshal.marshal_as<String^>(defineStr);
+			encoderSettings->Defines = msclr::interop::marshal_as<String^>(defineStr);
 		}
 		if (!config.OpenCLPlatform.empty())
-		{
-			msclr::interop::marshal_context marshal;
-			encoderSettings->Platform = marshal.marshal_as<String^>(config.OpenCLPlatform);
-		}
+			encoderSettings->Platform = msclr::interop::marshal_as<String^>(config.OpenCLPlatform);
 		if (config.UseCpuEmulation)
 			encoderSettings->DeviceType = CUETools::Codecs::FLACCL::OpenCLDeviceType::CPU;
 
