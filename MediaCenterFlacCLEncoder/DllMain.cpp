@@ -14,7 +14,8 @@ namespace {
 			for (boost::ptr_vector<EncoderRegistrationBase>::const_iterator i = Encoders.begin();
 				i != Encoders.end() && nIndex--; ++i)
 			{
-				return i->Create();
+				if (nIndex == 0)
+					return i->Create();
 			}
 
 			return nullptr;
