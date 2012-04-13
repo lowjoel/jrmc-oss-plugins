@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
+    <None Include="Installation\Installation Script.iss" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
