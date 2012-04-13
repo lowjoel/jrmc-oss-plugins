@@ -15,6 +15,7 @@ OutputBaseFilename=Setup
 Compression=lzma
 SolidCompression=yes
 DirExistsWarning=No
+SignTool=signtool
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
