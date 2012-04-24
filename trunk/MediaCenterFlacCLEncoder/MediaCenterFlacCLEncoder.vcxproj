@@ -72,17 +72,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="CUETools.Codecs, Version=2.1.4.0, Culture=neutral, PublicKeyToken=3ac89a0351e689b6">
-      <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.dll</HintPath>
+      <HintPath>Dependencies\CUETools.Codecs.dll</HintPath>
     </Reference>
     <Reference Include="CUETools.Codecs.FLACCL, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.FLACCL.dll</HintPath>
+      <HintPath>Dependencies\CUETools.Codecs.FLACCL.dll</HintPath>
     </Reference>
     <Reference Include="CUETools.Codecs.FLAKE, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\Applications\CueTools\bin\Release\CUETools.Codecs.FLAKE.dll</HintPath>
+      <HintPath>Dependencies\CUETools.Codecs.FLAKE.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="OpenCLNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\Applications\CueTools\bin\Release\OpenCLNet.dll</HintPath>
+      <HintPath>Dependencies\OpenCLNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
