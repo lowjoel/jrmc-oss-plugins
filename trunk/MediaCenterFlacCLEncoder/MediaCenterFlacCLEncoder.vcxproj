@@ -71,7 +71,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Reference Include="CUETools.Codecs, Version=2.1.4.0, Culture=neutral, PublicKeyToken=3ac89a0351e689b6">
+    <Reference Include="CUETools.Codecs, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>Dependencies\CUETools.Codecs.dll</HintPath>
     </Reference>
     <Reference Include="CUETools.Codecs.FLACCL, Version=2.1.4.0, Culture=neutral, PublicKeyToken=null">
