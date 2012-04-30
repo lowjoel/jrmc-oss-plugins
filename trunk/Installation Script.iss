@@ -25,8 +25,9 @@ Source: bin\Release\Win32\CUETools.Codecs.dll; DestDir: {app}; Flags: ignorevers
 Source: bin\Release\Win32\CUETools.Codecs.FLACCL.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: bin\Release\Win32\CUETools.Codecs.FLAKE.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: bin\Release\Win32\OpenCLNet.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: bin\Release\Win32\flac.cl; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: bin\Release\Win32\MediaCenterFlacCLEncoder.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: Dependencies\flac.cl; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\FlacCLEncoder.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+
 Source: bin\Release\NowPlaying.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: bin\Release\Interop.MediaCenter.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
