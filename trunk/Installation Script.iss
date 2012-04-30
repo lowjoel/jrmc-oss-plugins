@@ -2,10 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 [Setup]
-AppName=FlacCL Encoder Plugin for J. River Media Center
-AppVerName=FlacCL Encoder Plugin for J. River Media Center 1.0.0
-AppName=Now Playing for J. River Media Center
-AppVerName=Now Playing for J. River Media Center 0.1
+AppName=JRiver Media Center OSS Plugins
+AppVerName=JRiver Media Center OSS Plugins 1.0.0
 AppPublisher=Joel Low
 AppPublisherURL=http://code.google.com/p/jrmc-oss-plugins
 AppSupportURL=http://code.google.com/p/jrmc-oss-plugins
@@ -23,14 +21,14 @@ SignTool=signtool
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: ..\..\bin\Release\Win32\CUETools.Codecs.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\Win32\CUETools.Codecs.FLACCL.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\Win32\CUETools.Codecs.FLAKE.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\Win32\OpenCLNet.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\Win32\flac.cl; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\Win32\MediaCenterFlacCLEncoder.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\NowPlaying.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: ..\..\bin\Release\Interop.MediaCenter.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\CUETools.Codecs.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\CUETools.Codecs.FLACCL.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\CUETools.Codecs.FLAKE.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\OpenCLNet.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\flac.cl; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\MediaCenterFlacCLEncoder.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\NowPlaying.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Interop.MediaCenter.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
@@ -44,9 +42,9 @@ Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playi
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "ProdID"; ValueData: "JoelLow.NowPlaying"; Flags: uninsdeletekey
 
 [Run]
-Filename: "regsvr32"; Parameters: "/s ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering FlacCL Encoder"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
 
 [UninstallRun]
-Filename: "regsvr32"; Parameters: "/s /u ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering Plugin"; Flags:runhidden
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Plugin"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s /u ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering FlacCL Encoder"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
