@@ -3,7 +3,7 @@
 
 [Setup]
 AppName=JRiver Media Center OSS Plugins
-AppVerName=JRiver Media Center OSS Plugins 1.0.0
+AppVersion=1.0.0
 AppPublisher=Joel Low
 AppPublisherURL=http://code.google.com/p/jrmc-oss-plugins
 AppSupportURL=http://code.google.com/p/jrmc-oss-plugins
@@ -12,10 +12,18 @@ DefaultDirName={pf}\J River\Media Center 17\Plugins
 DefaultGroupName=
 DisableProgramGroupPage=yes
 OutputBaseFilename=Setup
-Compression=lzma
 SolidCompression=yes
 DirExistsWarning=No
 SignTool=signtool
+VersionInfoVersion=1.0.0
+VersionInfoCompany=Joel Low
+VersionInfoTextVersion=1.0.0
+VersionInfoCopyright=2012 Joel Low
+VersionInfoProductName=JRiver Media Center OSS Plugins
+VersionInfoProductVersion=1.0.0
+Compression=lzma2/ultra64
+InternalCompressLevel=ultra
+OutputDir=bin
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
