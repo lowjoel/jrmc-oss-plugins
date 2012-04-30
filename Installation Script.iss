@@ -51,9 +51,9 @@ Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playi
 Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playing"; ValueType: string; ValueName: "ProdID"; ValueData: "JoelLow.NowPlaying"; Flags: uninsdeletekey
 
 [Run]
-Filename: "regsvr32"; Parameters: "/s ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering FlacCL Encoder"; Flags:runhidden
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/Codebase ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s ""{app}\FlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering FlacCL Encoder"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v4.0.30319\regasm.exe"; Parameters: "/Codebase ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
 
 [UninstallRun]
-Filename: "regsvr32"; Parameters: "/s /u ""{app}\MediaCenterFlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering FlacCL Encoder"; Flags:runhidden
-Filename: "{win}\Microsoft.NET\Framework\v2.0.50727\regasm"; Parameters: "/unregister ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s /u ""{app}\FlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering FlacCL Encoder"; Flags:runhidden
+Filename: "{win}\Microsoft.NET\Framework\v4.0.30319\regasm.exe"; Parameters: "/unregister ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
