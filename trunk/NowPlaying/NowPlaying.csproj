@@ -60,7 +60,7 @@
   <ItemGroup>
     <Reference Include="Interop.MediaCenter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3ac89a0351e689b6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\Interop.MediaCenter.dll</HintPath>
+      <HintPath>..\Dependencies\Interop.MediaCenter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
