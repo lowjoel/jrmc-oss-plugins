@@ -118,7 +118,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.ico" />
     <None Include="Installation\Installation Script.iss" />
   </ItemGroup>
   <ItemGroup>
