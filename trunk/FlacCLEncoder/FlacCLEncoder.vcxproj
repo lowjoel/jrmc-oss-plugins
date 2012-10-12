@@ -118,9 +118,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Installation\Installation Script.iss" />
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
