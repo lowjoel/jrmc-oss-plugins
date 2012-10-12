@@ -46,11 +46,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)\Dependencies;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)\Dependencies;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DllMain.h" />
-    <ClInclude Include="JREncoder.h" />
     <ClInclude Include="JREncoderInterface.h" />
     <ClInclude Include="MediaCenterFlacCLEncoder.h" />
     <ClInclude Include="resource.h" />
