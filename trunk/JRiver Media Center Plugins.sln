@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlacCLEncoder", "FlacCLEncoder\FlacCLEncoder.vcxproj", "{1C41AB0B-DC3E-44D0-AF41-0F4FD15FDDFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowPlaying", "NowPlaying\NowPlaying.csproj", "{C7F2F0CF-C87D-4946-9ADE-4271549D4FFF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NeroAacEncoder", "NeroAacEncoder\NeroAacEncoder.vcxproj", "{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,16 @@ Global
 		{C7F2F0CF-C87D-4946-9ADE-4271549D4FFF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C7F2F0CF-C87D-4946-9ADE-4271549D4FFF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C7F2F0CF-C87D-4946-9ADE-4271549D4FFF}.Release|Win32.ActiveCfg = Release|Any CPU
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Debug|Win32.Build.0 = Debug|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Release|Win32.ActiveCfg = Release|Win32
+		{D6E249FF-FA6E-4EB8-86B5-32ADF6342A2E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
