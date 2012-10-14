@@ -1,8 +1,9 @@
 #include "Stdafx.h"
 
 #include "JREncoderInterface.h"
-#include "..\EncoderCommon\DllMain.h"
-#include "..\EncoderCommon\Util.h"
+#include "MediaCenterNeroAacEncoder.h"
+#include "DllMain.h"
+#include "Util.h"
 
 using namespace System;
 
@@ -101,12 +102,12 @@ namespace MediaCenterNeroAacEncoder {
 
 		String^ filePath = gcnew String(BStr(GetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME)));
 		filePath += L'.' + gcnew String(BStr(GetInfo(JR_ENCODER_INFO_EXTENSION)));
-		Encoder = gcnew MediaCenterNeroAacEncoder(filePath, format);
+		Encoder = gcnew MediaCenterNeroAacEncoder(filePath);
 		SetInfo(JR_ENCODER_INFO_DESTINATION_FILENAME, filePath);
 
 		//Set the settings
 		Config config(BStr(GetInfo(JR_ENCODER_INFO_SETTINGS)));
-		Encoder->Configure(config);
+		Encoder->Configure(config, pwfeFormat);
 
 		return TRUE;
 	}

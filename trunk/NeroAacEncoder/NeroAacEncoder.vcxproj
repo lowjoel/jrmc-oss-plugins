@@ -85,6 +85,7 @@
     <ClInclude Include="..\EncoderCommon\DllMain.h" />
     <ClInclude Include="..\EncoderCommon\Util.h" />
     <ClInclude Include="JREncoderInterface.h" />
+    <ClInclude Include="MediaCenterNeroAacEncoder.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
@@ -92,6 +93,7 @@
     <ClCompile Include="..\EncoderCommon\DllMain.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="JREncoderInterface.cpp" />
+    <ClCompile Include="MediaCenterNeroAacEncoder.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

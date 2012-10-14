@@ -30,6 +30,9 @@
     <ClInclude Include="..\EncoderCommon\Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MediaCenterNeroAacEncoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="..\EncoderCommon\DllMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaCenterNeroAacEncoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
