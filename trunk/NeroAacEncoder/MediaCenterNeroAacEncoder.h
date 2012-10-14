@@ -19,5 +19,8 @@ namespace MediaCenterNeroAacEncoder {
 	private:
 		/// The path to write the output file to.
 		System::String^ OutPath;
+
+		/// The encoder process
+		System::Diagnostics::Process^ Encoder;
 	};
 }
