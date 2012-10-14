@@ -101,7 +101,7 @@ namespace MediaCenterNeroAacEncoder {
 
 	private:
 		/// The handle to the encoder instance.
-		gcroot<ref class MediaCenterFlacCLEncoder^> Encoder;
+		gcroot<ref class MediaCenterNeroAacEncoder^> Encoder;
 
 		/// Settings set by JRMC
 		SettingsMap Settings;
