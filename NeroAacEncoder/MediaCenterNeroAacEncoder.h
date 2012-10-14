@@ -17,5 +17,7 @@ namespace MediaCenterNeroAacEncoder {
 		void Terminate();
 
 	private:
+		/// The path to write the output file to.
+		System::String^ OutPath;
 	};
 }
