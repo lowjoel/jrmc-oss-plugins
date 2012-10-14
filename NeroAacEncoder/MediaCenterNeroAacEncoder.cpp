@@ -1,8 +1,10 @@
 #include "Stdafx.h"
 #include "MediaCenterNeroAacEncoder.h"
+#include "DllMain.h"
 
 using namespace System;
 using namespace System::IO;
+using namespace System::Diagnostics;
 
 namespace MediaCenterNeroAacEncoder {
 	namespace {
@@ -16,6 +18,12 @@ namespace MediaCenterNeroAacEncoder {
 			unsigned __int32 HeaderSize; //16 + extra format bytes
 			WAVEFORMATEX Header;
 		};
+
+		struct DataChunk
+		{
+			unsigned __int32 DataID; //"data" 0x64617461
+			unsigned __int32 DataSize;
+		};
 	}
 
 	MediaCenterNeroAacEncoder::MediaCenterNeroAacEncoder(String^ outPath)
@@ -25,7 +33,7 @@ namespace MediaCenterNeroAacEncoder {
 
 	void MediaCenterNeroAacEncoder::Configure(const MediaCenterNeroAacEncoderInterface::Config& config, WAVEFORMATEX* format)
 	{
-		std::wstring commandLine(L"-ignoreLength -if - ");
+		std::wstring commandLine(L"-ignorelength ");
 		switch (config.Mode)
 		{
 		case MediaCenterNeroAacEncoderInterface::Config::EncoderMode::TargetBitRate:
@@ -60,33 +68,52 @@ namespace MediaCenterNeroAacEncoder {
 		default:
 			break;
 		}
-		
-		commandLine += L"-of \"";
-		String^ commandLineStr = gcnew String(commandLine.c_str());
-		commandLineStr = commandLineStr->Concat(OutPath);
-		commandLineStr = commandLineStr->Concat('"');
+		String^ commandLineStr = gcnew String(commandLine.c_str()) + L" -if - -of \"" + OutPath + "\"";
 
 		//Start the process.
+		ProcessStartInfo^ startInfo = gcnew ProcessStartInfo(Path::Combine(
+				Path::GetDirectoryName(gcnew String(EncoderRegistrationBase::GetDllPath().c_str())),
+				L"neroAacEnc.exe"),
+			commandLineStr);
+		startInfo->UseShellExecute = false;
+		startInfo->CreateNoWindow = true;
+		startInfo->RedirectStandardInput = true;
+		startInfo->RedirectStandardOutput = true;
+		Encoder = Process::Start(startInfo);
 
 		//Write the header.
-		WaveHeader header = { 0x52494646, 0, 0x57415645, 0x666D7420, sizeof(*format) };
-		header.Header = *format;
+		WaveHeader h = { 0 };
+		memcpy(&h.RiffID, "RIFF", sizeof(h.RiffID));
+		h.RiffLength = 0;
+		memcpy(&h.RiffType, "WAVE", sizeof(h.RiffType));
+		memcpy(&h.HeaderID, "fmt ", sizeof(h.HeaderID));
+		h.HeaderSize = sizeof(*format) + (format->cbSize ? format->cbSize : -2);
+		h.Header = *format;
 
-		array<Byte>^ buffer = gcnew array<Byte>(sizeof(header));
+		array<Byte>^ buffer = gcnew array<Byte>(sizeof(h));
 		pin_ptr<byte> bufferPtr = &buffer[0];
-		memcpy(bufferPtr, &header, sizeof(header));
+		memcpy(bufferPtr, &h, sizeof(h));
+		Encoder->StandardInput->BaseStream->Write(buffer, 0, sizeof(__int32) * 5 + h.HeaderSize);
 
 		//We are ready to start giving data blocks.
+		DataChunk chunk = { 0 };
+		memcpy(&chunk.DataID, "data", sizeof(chunk.DataID));
+		chunk.DataSize = 0;
+		memcpy(bufferPtr, &chunk, sizeof(chunk));
+		Encoder->StandardInput->BaseStream->Write(buffer, 0, sizeof(chunk));
 	}
 
 	void MediaCenterNeroAacEncoder::Write(array<Byte>^ data)
 	{
-		Writer->Write(data);
+		Debug::Assert(Encoder != nullptr);
+
+		Encoder->StandardInput->BaseStream->Write(data, 0, data->Length);
 	}
 
 	void MediaCenterNeroAacEncoder::Finish()
 	{
-		Writer->Close();
+		Encoder->StandardInput->Close();
+		Encoder->WaitForExit();
 	}
 
 	void MediaCenterNeroAacEncoder::Terminate()
