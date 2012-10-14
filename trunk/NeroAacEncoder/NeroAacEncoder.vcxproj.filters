@@ -33,6 +33,9 @@
     <ClInclude Include="MediaCenterNeroAacEncoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SettingsForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JREncoderInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

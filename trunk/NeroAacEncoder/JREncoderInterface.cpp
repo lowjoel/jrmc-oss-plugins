@@ -2,6 +2,7 @@
 
 #include "JREncoderInterface.h"
 #include "MediaCenterNeroAacEncoder.h"
+#include "SettingsForm.h"
 #include "DllMain.h"
 #include "Util.h"
 
@@ -151,7 +152,6 @@ namespace MediaCenterNeroAacEncoder {
 #pragma region Configuration dialog (can show user interface)
 	BOOL MediaCenterNeroAacEncoderInterface::Options()
 	{
-#if 0
 		SettingsForm form;
 		BStr config = GetInfo(JR_ENCODER_INFO_SETTINGS);
 		if (config && SysStringLen(config))
@@ -164,7 +164,7 @@ namespace MediaCenterNeroAacEncoder {
 			Config config(form.GetConfig());
 			SetInfo(JR_ENCODER_INFO_SETTINGS, config);
 		}
-#endif
+
 		return TRUE;
 	}
 #pragma endregion

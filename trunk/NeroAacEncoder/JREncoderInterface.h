@@ -30,7 +30,7 @@ namespace MediaCenterNeroAacEncoder {
 			};
 
 			enum class EncoderProfile {
-				Automatic,
+				Automatic = 0,
 				LcAAC,
 				HeAAC,
 				HeAACv2
