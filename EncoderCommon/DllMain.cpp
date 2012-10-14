@@ -61,7 +61,7 @@ namespace {
 	};
 }
 
-namespace MediaCenterFlacCLEncoder {
+namespace MediaCenterEncoder {
 #pragma region CreateEncoder
 	/// Export your plugin from a DLL with a single export function CreateEncoder.  You
 	/// can put any number of encoders into a single DLL.  CreateEncoder(...) will be
