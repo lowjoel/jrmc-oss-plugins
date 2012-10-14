@@ -46,13 +46,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)\Dependencies;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Dependencies;$(SolutionDir)\EncoderCommon;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(PlatformName)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)\Dependencies;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Dependencies;$(SolutionDir)\EncoderCommon;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,7 +96,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DllMain.h" />
+    <ClInclude Include="..\EncoderCommon\DllMain.h" />
+    <ClInclude Include="..\EncoderCommon\Util.h" />
     <ClInclude Include="JREncoderInterface.h" />
     <ClInclude Include="MediaCenterFlacCLEncoder.h" />
     <ClInclude Include="resource.h" />
@@ -104,11 +105,10 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\EncoderCommon\DllMain.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="DllMain.cpp" />
     <ClCompile Include="JREncoderInterface.cpp" />
     <ClCompile Include="JREncoderInterfaceConfig.cpp" />
     <ClCompile Include="MediaCenterFlacCLEncoder.cpp" />
