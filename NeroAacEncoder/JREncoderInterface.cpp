@@ -180,6 +180,57 @@ namespace MediaCenterNeroAacEncoder {
 #pragma region Settings, etc.
 	BSTR MediaCenterNeroAacEncoderInterface::GetInfo(LPCTSTR pName)
 	{
+		//Intercept the call to JR_ENCODER_INFO_ESTIMATED_BITRATE
+		if (!_tcscmp(pName, JR_ENCODER_INFO_ESTIMATED_BITRATE))
+		{
+			Config config(BStr(GetInfo(JR_ENCODER_INFO_SETTINGS)));
+			int kbps = 0;
+			switch (config.Mode)
+			{
+			case Config::EncoderMode::TargetBitRate:
+				kbps = config.TargetBitRate;
+				break;
+
+			case Config::EncoderMode::TargetStreamingBitRate:
+				kbps = config.TargetStreamingBitRate;
+				break;
+
+			case Config::EncoderMode::TargetQuality:
+				if (config.TargetQuality < 0.05)
+					kbps = 16;
+				else if (config.TargetQuality < 0.10)
+					kbps = 32;
+				else if (config.TargetQuality < 0.25)
+					kbps = 64;
+				else if (config.TargetQuality < 0.35)
+					kbps = 100;
+				else if (config.TargetQuality < 0.45)
+					kbps = 150;
+				else if (config.TargetQuality < 0.5)
+					kbps = 170;
+				else if (config.TargetQuality < 0.55)
+					kbps = 200;
+				else if (config.TargetQuality < 0.65)
+					kbps = 250;
+				else if (config.TargetQuality < 0.75)
+					kbps = 300;
+				else if (config.TargetQuality < 0.85)
+					kbps = 350;
+				else if (config.TargetQuality < 0.95)
+					kbps = 400;
+				else if (config.TargetQuality > 0.99)
+					kbps = 425;
+
+				if (config.Profile == Config::EncoderProfile::HeAACv2)
+					kbps /= 2;
+				else if (config.Profile == Config::EncoderProfile::HeAAC)
+					kbps = kbps * 2 / 3;
+			}
+
+			std::wstring result = boost::lexical_cast<std::wstring>(kbps);
+			return SysAllocStringLen(result.c_str(), result.length());
+		}
+		
 		SettingsMap::const_iterator i = Settings.find(pName);
 		if (i == Settings.end())
 			return nullptr;
