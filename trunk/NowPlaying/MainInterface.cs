@@ -233,23 +233,24 @@ namespace JoelLow.NowPlaying
 		/// </summary>
 		private void UpdateNowPlaying()
 		{
-			MediaCenter.IMJFileAutomation file = CurrentTrack;
-			if (file == null)
-				return;
-
-			//If we are no longer listening to audio, we should unset what's playing now.
-			if (file.Get("Media Type", false) != "Audio") //Can be "Video" or "Image"
-			{
-				WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
-				return;
-			}
-
 			switch (MediaCenterAutomation.GetPlayback().State)
 			{
 				case MediaCenter.MJPlaybackStates.PLAYSTATE_PLAYING:
 				case MediaCenter.MJPlaybackStates.PLAYSTATE_PAUSED:
-					WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name,
-						null, null);
+					MediaCenter.IMJFileAutomation file = CurrentTrack;
+					if (file == null)
+						return;
+
+					//If we are no longer listening to audio, we should unset what's playing now.
+					if (file.Get("Media Type", false) != "Audio") //Can be "Video" or "Image"
+					{
+						WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
+					}
+					else
+					{
+						WlmNowPlaying.SetNowPlaying(true, file.Artist, file.Album, file.Name,
+							null, null);
+					}
 					break;
 				case MediaCenter.MJPlaybackStates.PLAYSTATE_STOPPED:
 					WlmNowPlaying.SetNowPlaying(false, null, null, null, null, null);
