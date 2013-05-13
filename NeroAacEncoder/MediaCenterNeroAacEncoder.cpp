@@ -53,15 +53,15 @@ namespace MediaCenterNeroAacEncoder {
 		switch (config.Profile)
 		{
 		case MediaCenterNeroAacEncoderInterface::Config::EncoderProfile::LcAAC:
-			commandLine += L"-lc ";
+			commandLine += L" -lc ";
 			break;
 
 		case MediaCenterNeroAacEncoderInterface::Config::EncoderProfile::HeAAC:
-			commandLine += L"-he ";
+			commandLine += L" -he ";
 			break;
 
 		case MediaCenterNeroAacEncoderInterface::Config::EncoderProfile::HeAACv2:
-			commandLine += L"-hev2 ";
+			commandLine += L" -hev2 ";
 			break;
 
 		case MediaCenterNeroAacEncoderInterface::Config::EncoderProfile::Automatic:
