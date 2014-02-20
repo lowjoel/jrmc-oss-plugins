@@ -8,7 +8,7 @@ AppPublisher=Joel Low
 AppPublisherURL=http://code.google.com/p/jrmc-oss-plugins
 AppSupportURL=http://code.google.com/p/jrmc-oss-plugins
 AppUpdatesURL=http://code.google.com/p/jrmc-oss-plugins
-DefaultDirName={pf}\J River\Media Center 17\Plugins
+DefaultDirName={pf}\J River\Media Center 19\Plugins
 DefaultGroupName=
 DisableProgramGroupPage=yes
 OutputBaseFilename=Setup
@@ -33,6 +33,8 @@ Source: bin\Release\Win32\CUETools.Codecs.dll; DestDir: {app}; Flags: ignorevers
 Source: bin\Release\Win32\CUETools.Codecs.FLACCL.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: bin\Release\Win32\CUETools.Codecs.FLAKE.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: bin\Release\Win32\OpenCLNet.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\NeroAacEncoder.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
+Source: bin\Release\Win32\NeroAacEnc.exe; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: Dependencies\flac.cl; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 Source: bin\Release\Win32\FlacCLEncoder.dll; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs;
 
@@ -52,8 +54,10 @@ Root: HKLM; Subkey: "Software\J. River\Media Jukebox\Plugins\Interface\Now Playi
 
 [Run]
 Filename: "regsvr32"; Parameters: "/s ""{app}\FlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering FlacCL Encoder"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s ""{app}\NeroAacEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Nero AAC Encoder"; Flags:runhidden
 Filename: "{win}\Microsoft.NET\Framework\v4.0.30319\regasm.exe"; Parameters: "/Codebase ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
 
 [UninstallRun]
 Filename: "regsvr32"; Parameters: "/s /u ""{app}\FlacCLEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering FlacCL Encoder"; Flags:runhidden
+Filename: "regsvr32"; Parameters: "/s /u ""{app}\NeroAacEncoder.dll"""; WorkingDir: "{app}\"; StatusMsg: "Unregistering Nero AAC Encoder"; Flags:runhidden
 Filename: "{win}\Microsoft.NET\Framework\v4.0.30319\regasm.exe"; Parameters: "/unregister ""{app}\NowPlaying.dll"""; WorkingDir: "{app}\"; StatusMsg: "Registering Now Playing"; Flags:runhidden
